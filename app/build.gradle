@@ -53,4 +53,5 @@ dependencies {
     implementation root ["autodispose-lifecycle"]
     implementation root ["autodispose-android"]
     implementation root["autodispose-android-archcomponents"]
+    implementation root ["autosize"]
 }

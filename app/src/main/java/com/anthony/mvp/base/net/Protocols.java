@@ -6,6 +6,6 @@ package com.anthony.mvp.base.net;
  * 功能描述：
  */
 public class Protocols {
-    public static final String BASE_RELEASE_API_URL = "http://apis.juhe.cn/";
+    public static final String JUHE_BASE_RELEASE_API_URL = "http://apis.juhe.cn/";
 
 }

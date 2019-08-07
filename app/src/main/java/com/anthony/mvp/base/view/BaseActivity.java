@@ -2,12 +2,14 @@ package com.anthony.mvp.base.view;
 
 import android.content.Context;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.anthony.mvp.base.net.common.business.BaseView;
 import com.anthony.mvp.util.rxlife.RxLifecycleUtils;
 import com.anthony.mvp.util.toast.ToastUtils;
+import com.anthony.mvp.widgets.loading.dialog.LoadingDialog;
 import com.uber.autodispose.AutoDisposeConverter;
 
 /**
@@ -17,12 +19,12 @@ import com.uber.autodispose.AutoDisposeConverter;
  */
 public class BaseActivity extends AppCompatActivity implements BaseView {
     private Context mContext;
+    private LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
-
     }
 
     @Override
@@ -37,17 +39,27 @@ public class BaseActivity extends AppCompatActivity implements BaseView {
 
     @Override
     public void onLoadIng(String tip) {
+        if (loadingDialog == null) {
+            loadingDialog = new LoadingDialog(mContext);
+        }
+        loadingDialog.setLoadingTips(tip);
+        if (!loadingDialog.isShowing()) {
+            loadingDialog.show();
+        }
 
     }
 
     @Override
     public void loadCompleted() {
-
+        if (loadingDialog != null) {
+            loadingDialog.dismiss();
+            loadingDialog = null;
+        }
     }
 
     @Override
     public void loadError(Object errorMsg) {
-
+        ToastUtils.show("请求出错");
     }
 
     @Override
@@ -56,7 +68,7 @@ public class BaseActivity extends AppCompatActivity implements BaseView {
     }
 
     @Override
-    public <T>AutoDisposeConverter<T> bindLifecycle() {
+    public <T> AutoDisposeConverter<T> bindLifecycle() {
         return RxLifecycleUtils.bindLifecycle(this);
     }
 }

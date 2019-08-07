@@ -8,7 +8,7 @@ import okhttp3.Cache;
 /**
  * 创建时间:2019/8/6
  * 创建人：anthony.wang
- * 功能描述：
+ * 功能描述：json提交的请求类
  */
 public class JsonRequestClient extends BaseNetClient{
     private JsonRequestClient() {

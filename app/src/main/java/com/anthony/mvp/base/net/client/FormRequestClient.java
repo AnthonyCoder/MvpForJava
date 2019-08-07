@@ -1,6 +1,5 @@
 package com.anthony.mvp.base.net.client;
 
-import com.anthony.mvp.base.net.api.ApiService;
 import com.anthony.mvp.base.net.common.observer.AppObserver;
 import com.google.gson.Gson;
 
@@ -19,7 +18,7 @@ import okhttp3.ResponseBody;
 /**
  * 创建时间:2019/8/6
  * 创建人：anthony.wang
- * 功能描述：
+ * 功能描述：表单提交的请求类
  */
 public class FormRequestClient<M> extends BaseNetClient {
 
