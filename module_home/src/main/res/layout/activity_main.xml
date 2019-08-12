@@ -11,68 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10" />
-
-    <View
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/ctl_menu"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/gray_ea" />
+        android:layout_height="48dp"
+        android:background="#ffffff"
+        app:tl_iconGravity="LEFT"
+        app:tl_iconHeight="18dp"
+        app:tl_iconMargin="5dp"
+        app:tl_iconWidth="18dp"
+        app:tl_indicator_bounce_enable="false"
+        app:tl_indicator_color="#2C97DE"
+        app:tl_indicator_gravity="TOP"
+        app:tl_textSelectColor="#2C97DE"
+        app:tl_textUnselectColor="#66000000"
+        app:tl_textsize="15sp"
+        app:tl_underline_color="#DDDDDD"
+        app:tl_underline_gravity="TOP"
+        app:tl_underline_height="1dp"/>
 
-    <RadioGroup
-        android:id="@+id/rg_radio_group"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@android:color/white"
-        android:gravity="top"
-        android:orientation="horizontal"
-        android:padding="0dp">
-
-        <com.anthony.common.widgets.BadgeRadioButton
-            android:id="@+id/rb_home"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_menu_home"
-            android:gravity="center"
-            android:text="首页"
-            android:textSize="10sp" />
-
-
-        <com.anthony.common.widgets.BadgeRadioButton
-            android:id="@+id/rb_project"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_menu_project"
-            android:gravity="center"
-            android:text="项目"
-            android:textSize="10sp" />
-
-
-        <com.anthony.common.widgets.BadgeRadioButton
-            android:id="@+id/rb_system"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_menu_system"
-            android:gravity="center"
-            android:text="体系"
-            android:textSize="10sp" />
-
-
-        <com.anthony.common.widgets.BadgeRadioButton
-            android:id="@+id/rb_mine"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/selector_menu_mine"
-            android:gravity="center"
-            android:text="我的"
-            android:textSize="10sp" />
-
-    </RadioGroup>
 
 </LinearLayout>

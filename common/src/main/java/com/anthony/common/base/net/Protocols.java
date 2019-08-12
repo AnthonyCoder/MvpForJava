@@ -7,5 +7,6 @@ package com.anthony.common.base.net;
  */
 public class Protocols {
     public static final String JUHE_BASE_RELEASE_API_URL = "http://apis.juhe.cn/";
+    public static final String WAN_ANDROID_BASE_RELEASE_API_URL = "https://www.wanandroid.com/";
 
 }

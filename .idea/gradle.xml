@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/module_home" />
             <option value="$PROJECT_DIR$/module_project" />
+            <option value="$PROJECT_DIR$/module_tree" />
             <option value="$PROJECT_DIR$/module_user" />
           </set>
         </option>

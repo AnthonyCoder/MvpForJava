@@ -27,6 +27,10 @@ android {
 //            }
 //        }
     }
+
+    androidExtensions {
+        experimental = true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -51,7 +55,6 @@ android {
         }
     }
 }
-
 dependencies {
     implementation project(':common')
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

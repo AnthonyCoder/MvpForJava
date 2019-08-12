@@ -31,7 +31,7 @@ public abstract class BaseNetClient{
 
     protected abstract Cache getCache();//缓存对象
     protected Cache defaultCahe;
-    protected String defaultBaseUrl = Protocols.JUHE_BASE_RELEASE_API_URL;
+    protected String defaultBaseUrl = Protocols.WAN_ANDROID_BASE_RELEASE_API_URL;
     private static final int HTTP_TIMEOUT_SECONDS = 90;//超时时间（s）
     private static final int READ_TIMEOUT_SECONDS = 90;//超时时间（s）
     protected static final long DEFAULT_HTTP_CACHE_LONG_SIZE = 1024 * 1024 * 100;//最大缓存大小

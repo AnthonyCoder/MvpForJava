@@ -28,6 +28,9 @@ android {
 //            }
 //        }
     }
+    androidExtensions {
+        experimental = true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -48,7 +51,9 @@ dependencies {  api fileTree(dir: 'libs', include: ['*.jar'])
 //    api "com.android.support:support-annotations:28.0.0-alpha3"
 //    annotationProcessor "com.android.support:support-annotations:28.0.0-alpha3"
 
+    api root ["support-v4"]
     api root ["androidx-appcompat"]
+    api root ["androidx-recyclerview"]
     api root ["androidx-core"]
     api root ["androidx-constraintlayout"]
     api root ["rxjava2"]
@@ -73,5 +78,7 @@ dependencies {  api fileTree(dir: 'libs', include: ['*.jar'])
     api root ["andpermission"]
     api root ["smartrefresh-layout"]
     api root ["smartrefresh-header"]
+    api root ["flycotablayout"]
+    api root ["banner"]
     api root ["legacy-support-v4"]
 }

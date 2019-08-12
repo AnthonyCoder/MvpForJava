@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.anthony.modulehome">
+    package="com.anthony.home">
 
     <application>
         <activity
-            android:name="com.anthony.modulehome.business.view.MainActivity"
+            android:name="com.anthony.home.business.view.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -14,7 +14,7 @@
         </activity>
         <!--<activity android:name=".business.view.MainActivity"/>-->
 
-        <activity android:name="com.anthony.modulehome.business.view.TestActivity" />
+        <activity android:name="com.anthony.home.business.view.TestActivity" />
 
     </application>
 </manifest>
