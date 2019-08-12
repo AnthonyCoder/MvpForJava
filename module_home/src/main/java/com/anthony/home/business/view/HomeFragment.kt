@@ -41,7 +41,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
     private lateinit var banner: Banner
     private lateinit var gridViewPager: GridViewPager
     private val colors = intArrayOf(-0x13bf86, -0x54b844, -0xd6490a, -0x81a83e, -0x1dbf8d, -0x117ca0, -0xd95966, -0x10acb0, -0xd450d5, -0x58da)
-    private var page =0
+    private var page = 0
     private var searchLayoutHeight = 0
     private var bannerHeight = 0
     override fun getLayoutId(): Int = R.layout.fragment_home
@@ -64,7 +64,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
             page++
             mPresenter.getHomeArticles(page)
         }
-        rv_home.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+        rv_home.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val scrollOffset = recyclerView.computeVerticalScrollOffset()
@@ -140,13 +140,13 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
         gridViewPager.setOnGridItemClickListener { position, view ->
             gotoWeChatArticleListActivity(weChatAuthorResults[position])
         }
-        gridViewPager.setAdapter(object : GridViewPagerAdapter<WeChatAuthorResult.DataBean>(weChatAuthorResults){
+        gridViewPager.setAdapter(object : GridViewPagerAdapter<WeChatAuthorResult.DataBean>(weChatAuthorResults) {
             override fun bindData(viewHolder: GridRecyclerAdapter<*>.ViewHolder, t: WeChatAuthorResult.DataBean?, position: Int) {
                 t?.let {
                     val shapeDrawable = ShapeDrawable()
                     shapeDrawable.shape = OvalShape()
                     shapeDrawable.paint.color = colors[position % colors.size]
-                    viewHolder.setText(R.id.tv_home_author_icon,it.name[0].toString())
+                    viewHolder.setText(R.id.tv_home_author_icon, it.name[0].toString())
                             .setText(R.id.tv_home_author_name, it.name)
                             .setBackground(R.id.tv_home_author_icon, shapeDrawable)
                 }
@@ -157,10 +157,14 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
     }
 
     override fun onHomeArticles(result: HomeArticleResult?) {
-        srl_home.finishRefresh(0)
+        srl_home.finishRefresh()
+        srl_home.finishLoadMore()
         result?.let {
             val datas = it.data.datas
             if (datas != null) {
+                if (page == 0) {
+                    dataList.clear()
+                }
                 dataList.addAll(datas)
                 if (homeArticleAdapter == null) {
                     homeArticleAdapter = HomeArticleAdapter(dataList)
@@ -194,6 +198,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
 //        activity.overridePendingTransition(R.anim.anim_web_enter, R.anim.anim_alpha)
 
     }
+
     /**
      * 跳转至微信公众号文章列表页面
      *
@@ -207,6 +212,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
 //                .withBundle("bundle", bundle)
 //                .navigation()
     }
+
     private fun gotoWebViewActivity(datasBean: HomeArticleResult.DataBean.DatasBean) {
 //        val bundle = Bundle()
 //        bundle.putString(SyncStateContract.Constants.URL, datasBean.getLink())
