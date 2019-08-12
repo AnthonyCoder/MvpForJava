@@ -1,92 +1,106 @@
 package com.anthony.home.bean;
 
+import com.anthony.common.base.net.model.BaseResponseModel;
+
 import java.io.Serializable;
 import java.util.List;
 
-public class WeChatAuthorResult implements Serializable {
+public class WeChatAuthorResult extends BaseResponseModel implements Serializable {
 
 
-    /**
-     * children : []
-     * courseId : 13
-     * id : 408
-     * name : 鸿洋
-     * order : 190000
-     * parentChapterId : 407
-     * userControlSetTop : false
-     * visible : 1
-     */
+    private List<DataBean> data;
 
-    private int courseId;
-    private int id;
-    private String name;
-    private int order;
-    private int parentChapterId;
-    private boolean userControlSetTop;
-    private int visible;
-    private List<?> children;
-
-    public int getCourseId() {
-        return courseId;
+    public List<DataBean> getData() {
+        return data;
     }
 
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
+    public void setData(List<DataBean> data) {
+        this.data = data;
     }
 
-    public int getId() {
-        return id;
-    }
+    public static class DataBean {
+        /**
+         * children : []
+         * courseId : 13
+         * id : 408
+         * name : 鸿洋
+         * order : 190000
+         * parentChapterId : 407
+         * userControlSetTop : false
+         * visible : 1
+         */
 
-    public void setId(int id) {
-        this.id = id;
-    }
+        private int courseId;
+        private int id;
+        private String name;
+        private int order;
+        private int parentChapterId;
+        private boolean userControlSetTop;
+        private int visible;
+        private List<?> children;
 
-    public String getName() {
-        return name;
-    }
+        public int getCourseId() {
+            return courseId;
+        }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        public void setCourseId(int courseId) {
+            this.courseId = courseId;
+        }
 
-    public int getOrder() {
-        return order;
-    }
+        public int getId() {
+            return id;
+        }
 
-    public void setOrder(int order) {
-        this.order = order;
-    }
+        public void setId(int id) {
+            this.id = id;
+        }
 
-    public int getParentChapterId() {
-        return parentChapterId;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public void setParentChapterId(int parentChapterId) {
-        this.parentChapterId = parentChapterId;
-    }
+        public void setName(String name) {
+            this.name = name;
+        }
 
-    public boolean isUserControlSetTop() {
-        return userControlSetTop;
-    }
+        public int getOrder() {
+            return order;
+        }
 
-    public void setUserControlSetTop(boolean userControlSetTop) {
-        this.userControlSetTop = userControlSetTop;
-    }
+        public void setOrder(int order) {
+            this.order = order;
+        }
 
-    public int getVisible() {
-        return visible;
-    }
+        public int getParentChapterId() {
+            return parentChapterId;
+        }
 
-    public void setVisible(int visible) {
-        this.visible = visible;
-    }
+        public void setParentChapterId(int parentChapterId) {
+            this.parentChapterId = parentChapterId;
+        }
 
-    public List<?> getChildren() {
-        return children;
-    }
+        public boolean isUserControlSetTop() {
+            return userControlSetTop;
+        }
 
-    public void setChildren(List<?> children) {
-        this.children = children;
+        public void setUserControlSetTop(boolean userControlSetTop) {
+            this.userControlSetTop = userControlSetTop;
+        }
+
+        public int getVisible() {
+            return visible;
+        }
+
+        public void setVisible(int visible) {
+            this.visible = visible;
+        }
+
+        public List<?> getChildren() {
+            return children;
+        }
+
+        public void setChildren(List<?> children) {
+            this.children = children;
+        }
     }
 }

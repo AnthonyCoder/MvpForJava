@@ -13,5 +13,6 @@ public class Constant {
     public static final String NET_RESPONSE_HEADER = "响应头信息------------->%s";
     public static final String NET_RESPONSE_SUCESS_STRING = "{\"响应状态\":\"成功\", \"对应请求\":\"%s\",\"响应体\" : %s}";
     public static final String NET_RESPONSE_FAIL_STRING = "响应失败： 对应请求url = %s\n异常信息 = %s";
+    public static final String NET_EXCEPTION_STRING = "响应异常：异常信息 = %s";
     public static final String HTTP_CACHE = "HttpCache";
 }

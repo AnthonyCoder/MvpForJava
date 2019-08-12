@@ -1,9 +1,11 @@
 package com.anthony.common.base.view;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.anthony.common.base.net.common.business.BasePresenter;
 import com.anthony.common.base.net.common.business.BaseView;
+import com.anthony.common.util.StatusBarUtil;
 import com.anthony.common.util.rxlife.RxLifecycleUtils;
 import com.anthony.common.util.toast.ToastUtils;
 import com.anthony.common.widgets.loading.dialog.LoadingDialog;
@@ -32,10 +35,14 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
+        setStatusBarColor();
         rootView = LayoutInflater.from(mContext).inflate(getLayoutId(), null);
         setContentView(rootView);
         if(getmPresenter()!=null){
             mPresenter = getmPresenter();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);//黑色
         }
         initView();
         initData();
@@ -94,7 +101,27 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         Fragment routerFragment = (Fragment) ARouter.getInstance().build(path).navigation();
         return routerFragment;
     }
+    public void setStatusBarColor() {
+        StatusBarUtil.setColor(this, getResources().getColor(android.R.color.white), 0);
+    }
 
+    public void setStatusBarTranslucent(int alpha) {
+        StatusBarUtil.setTranslucentForImageViewInFragment(this, alpha, null);
+    }
+    public void setStatusBarTextColor(Window window, boolean lightStatusBar) {
+        // 设置状态栏字体颜色 白色与深色
+        View decor = window.getDecorView();
+        int ui = decor.getSystemUiVisibility();
+        ui |= View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (lightStatusBar) {
+                ui |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            } else {
+                ui &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            }
+        }
+        decor.setSystemUiVisibility(ui);
+    }
     protected abstract int getLayoutId();
 
     protected abstract void initView();

@@ -12,7 +12,7 @@ import com.anthony.user.business.presenter.UserPresenter
  * 创建人：anthony.wang
  * 功能描述：
  */
-@Route(path = ARouterConstants.MENU_FRAGMENT_USER)
+@Route(path = ARouterConstants.USER_MAIN_FRAGMENT)
 class UserFragment: BaseFragment<UserPresenter>(), UserContact.View{
     override fun getmPresenter(): UserPresenter = UserPresenter(this)
 

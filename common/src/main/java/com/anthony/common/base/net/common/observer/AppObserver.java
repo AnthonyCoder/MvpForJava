@@ -1,8 +1,10 @@
 package com.anthony.common.base.net.common.observer;
 
 import com.anthony.common.R;
+import com.anthony.common.base.constant.Constant;
 import com.anthony.common.base.net.common.business.BaseView;
 import com.anthony.common.base.net.common.exception.ApiException;
+import com.orhanobut.logger.Logger;
 
 import java.lang.reflect.ParameterizedType;
 
@@ -35,6 +37,7 @@ public abstract class AppObserver<T> extends BaseObserver<T> {
 
     @Override
     protected void onError(ApiException ex) {
+        Logger.t(Constant.NET_LOG_TAG).e(String.format(Constant.NET_EXCEPTION_STRING, ex.getDisplayMessage()));
         if(view!=null){
             view.loadError(ex);
         }

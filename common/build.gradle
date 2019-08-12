@@ -6,11 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 def config = rootProject.ext.android
 def root = rootProject.ext.dependencies
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
-}
 android {
     compileSdkVersion config.compileSdkVersion
     buildToolsVersion config.buildToolsVersion
@@ -22,11 +17,6 @@ android {
         multiDexEnabled true
         ndk config.ndk
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [AROUTER_MODULE_NAME: project.getName()]
-//            }
-//        }
     }
     androidExtensions {
         experimental = true
@@ -43,13 +33,16 @@ android {
     }
 }
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 dependencies {  api fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-//    api "com.android.support:support-annotations:28.0.0-alpha3"
-//    annotationProcessor "com.android.support:support-annotations:28.0.0-alpha3"
 
     api root ["support-v4"]
     api root ["androidx-appcompat"]

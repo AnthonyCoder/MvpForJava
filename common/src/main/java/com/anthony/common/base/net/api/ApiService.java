@@ -21,12 +21,19 @@ public interface ApiService {
     Observable<ResponseBody> executeGet(
             @Path(value = "url",encoded = true) String url,
             @QueryMap Map<String, Object> maps);
+    @GET("{url}")
+    Observable<ResponseBody> executeGet(
+            @Path(value = "url",encoded = true) String url);
 
 
     @POST("{url}")
     Observable<ResponseBody> executePost(
             @Path(value = "url",encoded = true) String url,
             @FieldMap Map<String, Object> maps);
+
+    @POST("{url}")
+    Observable<ResponseBody> executePost(
+            @Path(value = "url",encoded = true) String url);
 
 
     @GET("{url}")
@@ -35,12 +42,23 @@ public interface ApiService {
             @Path(value = "url",encoded = true) String url,
             @QueryMap Map<String, Object> maps);
 
+    @GET("{url}")
+    Observable<ResponseBody> executeGetWithHeader(
+            @HeaderMap Map<String, String> headers,
+            @Path(value = "url",encoded = true) String url);
+
 
     @POST("{url}")
     Observable<ResponseBody> executePostWithHeader(
             @HeaderMap Map<String, String> headers,
             @Path(value = "url",encoded = true) String url,
             @FieldMap Map<String, Object> maps);
+
+
+    @POST("{url}")
+    Observable<ResponseBody> executePostWithHeader(
+            @HeaderMap Map<String, String> headers,
+            @Path(value = "url",encoded = true) String url);
 
 
 }

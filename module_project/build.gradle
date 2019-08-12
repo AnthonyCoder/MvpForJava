@@ -6,11 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 def config = rootProject.ext.android
 def root = rootProject.ext.dependencies
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
-}
 android {
     compileSdkVersion config.compileSdkVersion
     buildToolsVersion config.buildToolsVersion
@@ -22,11 +17,6 @@ android {
         multiDexEnabled true
         ndk config.ndk
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [AROUTER_MODULE_NAME: project.getName()]
-//            }
-//        }
     }
     androidExtensions {
         experimental = true
@@ -43,8 +33,12 @@ android {
     }
 }
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 dependencies {
     implementation project(':common')
-    api root ["arouter"]
     kapt root ["arouter-compiler"]
 }

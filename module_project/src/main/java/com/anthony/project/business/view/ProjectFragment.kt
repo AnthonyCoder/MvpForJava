@@ -13,7 +13,7 @@ import com.anthony.project.business.presenter.ProjectPresenter
  * 功能描述：
  */
 
-@Route(path = ARouterConstants.MENU_FRAGMENT_PROJECT)
+@Route(path = ARouterConstants.PROJECT_MAIN_FRAGMENT)
 class ProjectFragment: BaseFragment<ProjectPresenter>(),ProjectContact.View{
     override fun getmPresenter(): ProjectPresenter = ProjectPresenter(this)
 

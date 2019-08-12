@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -49,6 +50,9 @@ public class FormRequestClient<M> extends BaseNetClient {
     private Observable requestData(RequestType requestType,Map<String,String> headerMap, String url, Map<String, Object> params, AppObserver<M> observer) {
         if (requestType == null) {
             requestType = RequestType.GET;
+        }
+        if(params == null){
+            params = new HashMap<>();
         }
         Observable requestObservable = null;
         Observer<ResponseBody> responseBodyObserver = new Observer<ResponseBody>() {

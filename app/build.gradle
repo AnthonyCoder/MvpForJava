@@ -8,11 +8,7 @@ apply plugin: 'kotlin-android-extensions'
 def config = rootProject.ext.android
 def root = rootProject.ext.dependencies
 
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
-}
+
 android {
     compileSdkVersion config.compileSdkVersion
     buildToolsVersion config.buildToolsVersion
@@ -47,12 +43,17 @@ android {
 //        experimental = true
 //    }
 }
-
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 dependencies {
     implementation project(':common')
     implementation project (':module_home')
     implementation project (':module_project')
     implementation project (':module_user')
+    implementation project (':module_other')
     api root ["arouter"]
     kapt root ["arouter-compiler"]
 }

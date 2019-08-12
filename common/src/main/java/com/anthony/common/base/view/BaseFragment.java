@@ -74,7 +74,12 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment  im
         }
 
     }
+    public void setStatusBarTranslucent(int alpha) {
+        if(mContext instanceof BaseActivity){
+            ((BaseActivity)mContext).setStatusBarTranslucent(alpha);
+        }
 
+    }
     @Override
     public void loadCompleted() {
         if (loadingDialog != null) {

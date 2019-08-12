@@ -5,11 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 
 def config = rootProject.ext.android
 def root = rootProject.ext.dependencies
-kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
-}
+
 android {
     compileSdkVersion config.compileSdkVersion
     buildToolsVersion config.buildToolsVersion
@@ -21,11 +17,6 @@ android {
         multiDexEnabled true
         ndk config.ndk
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [AROUTER_MODULE_NAME: project.getName()]
-//            }
-//        }
     }
 
     androidExtensions {
@@ -41,23 +32,26 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
-    sourceSets {
-        main {
-            if (isRunAlone.toBoolean()) {
-                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
-            } else {
-                manifest.srcFile 'src/main/AndroidManifest.xml'
-                java {
-                    // 全部 module 一起编译时剔除 debug 目录
-                    exclude '**/debug/**'
-                }
-            }
-        }
+//    sourceSets {
+//        main {
+//            if (isRunAlone.toBoolean()) {
+//                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+//            } else {
+//                manifest.srcFile 'src/main/AndroidManifest.xml'
+//                java {
+//                    // 全部 module 一起编译时剔除 debug 目录
+//                    exclude '**/debug/**'
+//                }
+//            }
+//        }
+//    }
+}
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
     }
 }
 dependencies {
     implementation project(':common')
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    api root ["arouter"]
     kapt root ["arouter-compiler"]
 }
