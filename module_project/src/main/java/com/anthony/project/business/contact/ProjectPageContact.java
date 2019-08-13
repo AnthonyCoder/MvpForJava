@@ -1,7 +1,7 @@
 package com.anthony.project.business.contact;
 
 import com.anthony.common.base.net.common.business.BaseView;
-import com.anthony.project.business.bean.ProjectTreeResult;
+import com.anthony.project.business.bean.ProjectListResult;
 
 import java.util.List;
 
@@ -10,11 +10,11 @@ import java.util.List;
  * 创建人：anthony.wang
  * 功能描述：
  */
-public interface ProjectContact {
+public interface ProjectPageContact {
     interface View extends BaseView{
-        void onProjectTabs(List<ProjectTreeResult .DataBean> itemList);
+        void projectList(List<ProjectListResult.DataBean.DatasBean> modelList);
     }
     interface Presenter {
-        void getProjectTabs();
+        void getProject(int id,int page);
     }
 }

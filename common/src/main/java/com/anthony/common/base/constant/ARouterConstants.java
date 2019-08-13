@@ -12,6 +12,9 @@ public class ARouterConstants {
 
 
     public static final String PROJECT_MAIN_FRAGMENT="/project/main/fragment";
+    public static final String PROJECT_PAGE_FRAGMENT="/project/page/fragment";
+
+
     public static final String OTHER_MAIN_FRAGMENT="/other/main/fragment";
     public static final String USER_MAIN_FRAGMENT="/user/main/fragment";
 }

@@ -10,6 +10,7 @@
     <color name="gray_f5">#fff5f5f5</color>
     <color name="white_f4f5f6">#fff4f5f6</color>
     <color name="white_aaa">#ffaaaaaa</color>
+    <color name="warning_red">#FC6156</color>
     <color name="black_333">#ff333333</color>
     <color name="black_999">#ff999999</color>
     <color name="white_fc">#fffcfcfc</color>

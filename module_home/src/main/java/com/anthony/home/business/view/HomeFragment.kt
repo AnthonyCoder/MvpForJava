@@ -50,11 +50,11 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
 
 
     override fun initView() {
-        headerView = LayoutInflater.from(mContext).inflate(R.layout.layout_home_header, null)
+        headerView = LayoutInflater.from(mActivity).inflate(R.layout.layout_home_header, null)
         banner = headerView.findViewById(R.id.banner_home)
         setStatusBarTranslucent(0)
         val lp = rl_search_header.layoutParams as RelativeLayout.LayoutParams
-        lp.topMargin = StatusBarUtil.getStatusBarHeight(mContext)
+        lp.topMargin = StatusBarUtil.getStatusBarHeight(mActivity)
         gridViewPager = headerView.findViewById(R.id.gvp_viewpager)
         srl_home.setOnRefreshListener {
             page = 0
@@ -74,7 +74,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
                 if (bannerHeight == 0) {
                     bannerHeight = banner.measuredHeight
                 }
-                val maxOffset = bannerHeight - StatusBarUtil.getStatusBarHeight(mContext) - searchLayoutHeight
+                val maxOffset = bannerHeight - StatusBarUtil.getStatusBarHeight(mActivity) - searchLayoutHeight
                 if (scrollOffset <= maxOffset) {
                     val percent = scrollOffset * 1.0f / maxOffset
                     rl_search_header.background.mutate().alpha = (255 * percent).toInt()
@@ -82,21 +82,18 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
                     iv_home_logo.setImageResource(R.drawable.ic_home_logo_white)
                     tv_home_search.background = resources.getDrawable(R.drawable.shape_home_input)
                     setStatusBarTranslucent((255 * percent).toInt())
-
-
                 } else {
                     tv_home_login.setTextColor(resources.getColor(R.color.colorAccent))
                     iv_home_logo.setImageResource(R.drawable.ic_home_logo_black)
                     tv_home_search.background = resources.getDrawable(R.drawable.shape_home_input_dark)
-                    //            ((MainActivity) getActivity()).setStatusBarWhite();
                 }
             }
         })
     }
 
     override fun initData() {
-        rv_home.layoutManager = LinearLayoutManager(mContext, RecyclerView.VERTICAL, false)
-        rv_home.addItemDecoration(LinearItemDecoration(mContext).height(8f).color(Color.parseColor("#66dddddd")))
+        rv_home.layoutManager = LinearLayoutManager(mActivity, RecyclerView.VERTICAL, false)
+        rv_home.addItemDecoration(LinearItemDecoration(mActivity).height(8f).color(Color.parseColor("#66dddddd")))
         banner.setImageLoader(GlideImageLoader())
         mPresenter.getBanner()
         mPresenter.getWeChatAuthors()

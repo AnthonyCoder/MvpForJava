@@ -22,11 +22,6 @@ android {
         ndk config.ndk
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [AROUTER_MODULE_NAME: project.getName()]
-//            }
-//        }
     }
     buildTypes {
         release {
@@ -38,16 +33,15 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
-//    //配置文件添加如下：
-//    androidExtensions {
-//        experimental = true
-//    }
 }
+
 kapt {
     arguments {
         arg("AROUTER_MODULE_NAME", project.getName())
     }
 }
+
+
 dependencies {
     implementation project(':common')
     implementation project (':module_home')

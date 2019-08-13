@@ -14,10 +14,6 @@ class HomeArticleAdapter : BaseQuickAdapter<HomeArticleResult.DataBean.DatasBean
 
     constructor(data: List<HomeArticleResult.DataBean.DatasBean>?): super(R.layout.item_home_article,data)
 
-    constructor(layoutResId: Int) : super(layoutResId)
-
-    constructor(layoutResId: Int, data: List<HomeArticleResult.DataBean.DatasBean>?) : super(layoutResId, data)
-
     override fun convert(helper: BaseViewHolder, item: HomeArticleResult.DataBean.DatasBean) {
         helper.setText(R.id.tv_article_title, item.title)
                 .setText(R.id.tv_article_author, item.author)

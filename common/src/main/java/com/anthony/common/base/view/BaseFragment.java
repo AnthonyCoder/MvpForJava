@@ -1,5 +1,6 @@
 package com.anthony.common.base.view;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,7 +25,7 @@ import com.uber.autodispose.AutoDisposeConverter;
  * 功能描述：
  */
 public abstract class BaseFragment<P extends BasePresenter> extends Fragment  implements BaseView {
-    protected Context mContext;
+    protected Activity mActivity;
     private LoadingDialog loadingDialog;
     private View rootView;
     protected P mPresenter;
@@ -33,7 +34,10 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment  im
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mContext = getActivity();
+        if(getmPresenter()!=null){
+            mPresenter = getmPresenter();
+        }
+        mActivity = getActivity();
         rootView = getView();
     }
 
@@ -46,9 +50,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment  im
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if(getmPresenter()!=null){
-            mPresenter = getmPresenter();
-        }
         initView();
         initData();
     }
@@ -66,7 +67,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment  im
     @Override
     public void onLoadIng(String tip) {
         if (loadingDialog == null) {
-            loadingDialog = new LoadingDialog(mContext);
+            loadingDialog = new LoadingDialog(mActivity);
         }
         loadingDialog.setLoadingTips(tip);
         if (!loadingDialog.isShowing()) {
@@ -75,8 +76,8 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment  im
 
     }
     public void setStatusBarTranslucent(int alpha) {
-        if(mContext instanceof BaseActivity){
-            ((BaseActivity)mContext).setStatusBarTranslucent(alpha);
+        if(mActivity instanceof BaseActivity){
+            ((BaseActivity)mActivity).setStatusBarTranslucent(alpha);
         }
 
     }
@@ -95,7 +96,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment  im
 
     @Override
     public Context getContext() {
-        return mContext;
+        return mActivity;
     }
 
     @Override
