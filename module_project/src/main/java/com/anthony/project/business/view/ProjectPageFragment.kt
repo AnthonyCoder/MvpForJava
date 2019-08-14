@@ -80,15 +80,6 @@ class ProjectPageFragment: BaseLazyFragment<ProjectPagePresenter>(),ProjectPageC
      * 跳转到 WebViewActivity
      */
     private fun gotoWebViewActivity(datasBean: ProjectListResult.DataBean.DatasBean) {
-//        val bundle = Bundle()
-//        bundle.putString(Constants.URL, datasBean.getLink())
-//        bundle.putInt(Constants.ID, datasBean.getId())
-//        bundle.putString(Constants.AUTHOR, datasBean.getAuthor())
-//        bundle.putString(Constants.TITLE, datasBean.getTitle())
-//        ARouter.getInstance()
-//                .build("/web/WebViewActivity")
-//                .with(bundle)
-//                .navigation()
-//        activity.overridePendingTransition(R.anim.anim_web_enter, R.anim.anim_alpha)
+        ARouter.getInstance().build(ARouterConstants.COMMON_X5WEB_ACTIVITY).withString("loadUrl", datasBean.link).withString("webTitle", datasBean.title).navigation()
     }
 }

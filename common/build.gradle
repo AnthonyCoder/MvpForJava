@@ -49,6 +49,7 @@ dependencies {  api fileTree(dir: 'libs', include: ['*.jar'])
     api root ["androidx-recyclerview"]
     api root ["androidx-core"]
     api root ["androidx-constraintlayout"]
+    api root ["legacy-support-v4"]
     api root ["rxjava2"]
     api root ["rxandroid2"]
     api root ["retrofit2"]
@@ -73,5 +74,5 @@ dependencies {  api fileTree(dir: 'libs', include: ['*.jar'])
     api root ["smartrefresh-header"]
     api root ["flycotablayout"]
     api root ["banner"]
-    api root ["legacy-support-v4"]
+    api root ["x5webview"]
 }

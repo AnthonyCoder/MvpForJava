@@ -17,4 +17,7 @@ public class ARouterConstants {
 
     public static final String OTHER_MAIN_FRAGMENT="/other/main/fragment";
     public static final String USER_MAIN_FRAGMENT="/user/main/fragment";
+
+
+    public static final String COMMON_X5WEB_ACTIVITY="/common/x5web/activity";
 }

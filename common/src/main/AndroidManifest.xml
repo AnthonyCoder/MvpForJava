@@ -1,2 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.anthony.common" />
+    package="com.anthony.common" >
+
+    <application>
+        <activity android:name=".view.CommonWebViewActivity"
+            android:launchMode="singleTop"/>
+    </application>
+</manifest>

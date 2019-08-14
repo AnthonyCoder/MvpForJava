@@ -5,7 +5,8 @@
     <application>
         <activity
             android:name="com.anthony.home.business.view.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -44,9 +44,6 @@ ext {
             "glide-compiler"                 : "com.github.bumptech.glide:compiler:4.9.0",
             "arouter"                        : "com.alibaba:arouter-api:1.5.0",
             "arouter-compiler"               : "com.alibaba:arouter-compiler:1.2.2",
-//            versions.arouter_api = "1.3.1"
-//            versions.arouter_register = "1.0.2"
-//            versions.arouter_compiler = "1.1.4"
             "eventbus"                       : "org.greenrobot:eventbus:3.1.1",
             "greendao"                       : "org.greenrobot:greendao:3.2.2",
             "andpermission"                  : "com.yanzhenjie.permission:support:2.0.1",
@@ -55,6 +52,7 @@ ext {
             "legacy-support-v4"              : "androidx.legacy:legacy-support-v4:1.0.0",
             "flycotablayout"                 : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
             "banner"                         : "com.youth.banner:banner:1.4.10",
+            "x5webview"                      : "com.tencent.tbs.tbssdk:sdk:43697"
 
     ]
 }

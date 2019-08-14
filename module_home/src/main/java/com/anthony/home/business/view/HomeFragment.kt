@@ -9,6 +9,7 @@ import android.widget.RelativeLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.anthony.common.adapter.base.BaseQuickAdapter
 import com.anthony.common.adapter.grid.GridRecyclerAdapter
 import com.anthony.common.adapter.grid.GridViewPager
@@ -211,16 +212,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
     }
 
     private fun gotoWebViewActivity(datasBean: HomeArticleResult.DataBean.DatasBean) {
-//        val bundle = Bundle()
-//        bundle.putString(SyncStateContract.Constants.URL, datasBean.getLink())
-//        bundle.putInt(SyncStateContract.Constants.ID, datasBean.getId())
-//        bundle.putString(Constants.AUTHOR, datasBean.getAuthor())
-//        bundle.putString(Constants.TITLE, datasBean.getTitle())
-//        ARouter.getInstance()
-//                .build("/web/WebViewActivity")
-//                .with(bundle)
-//                .navigation()
-//        activity.overridePendingTransition(R.anim.anim_web_enter, R.anim.anim_alpha)
+        ARouter.getInstance().build(ARouterConstants.COMMON_X5WEB_ACTIVITY).withString("loadUrl", datasBean.link).withString("webTitle", datasBean.title).navigation()
     }
 
 }

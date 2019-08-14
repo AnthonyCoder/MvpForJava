@@ -49,7 +49,7 @@ class MainActivity : BaseActivity<BasePresenter<BaseView>>() {
 
     }
 
-    override fun getmPresenter(): BasePresenter<BaseView>? = null
+    override fun getmPresenter():BasePresenter<BaseView> = BasePresenter(this)
 
 
 }
