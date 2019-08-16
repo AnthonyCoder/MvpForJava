@@ -1,7 +1,7 @@
 package com.anthony.project.business.presenter;
 
 import com.anthony.common.base.net.UrlConstant;
-import com.anthony.common.base.net.client.FormRequestClient;
+import com.anthony.common.base.net.client.WanAndroidFormRequestClient;
 import com.anthony.common.base.net.common.business.BasePresenter;
 import com.anthony.common.base.net.common.observer.AppObserver;
 import com.anthony.project.business.bean.ProjectTreeResult;
@@ -20,7 +20,7 @@ public class ProjectPresenter extends BasePresenter<ProjectContact.View> impleme
 
     @Override
     public void getProjectTabs() {
-        FormRequestClient.getInstance().executeGet(UrlConstant.GET_PROJECT_TREE, null, new AppObserver<ProjectTreeResult>() {
+        WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_PROJECT_TREE, null, new AppObserver<ProjectTreeResult>() {
             @Override
             public void onNext(ProjectTreeResult treeResult) {
                 view.onProjectTabs(treeResult.getData());

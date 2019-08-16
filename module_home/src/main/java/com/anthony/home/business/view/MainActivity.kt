@@ -36,7 +36,7 @@ class MainActivity : BaseActivity<BasePresenter<BaseView>>() {
     override fun initData() {
         var homeFragment = getFragment(ARouterConstants.HOME_MAIN_FRAGMENT)
         var projectFragment = getFragment(ARouterConstants.PROJECT_MAIN_FRAGMENT)
-        var treeFragment = getFragment(ARouterConstants.OTHER_MAIN_FRAGMENT)
+        var treeFragment = getFragment(ARouterConstants.GANK_MAIN_FRAGMENT)
         var userFragment = getFragment(ARouterConstants.USER_MAIN_FRAGMENT)
         fragments = arrayListOf(homeFragment,
                 projectFragment,

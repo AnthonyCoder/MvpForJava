@@ -6,6 +6,10 @@ package com.anthony.common.base.net;
  * 功能描述：
  */
 public class UrlConstant {
+
+    /**
+     * WAN Android Api
+     */
     public static final String WEATHER_CITY_LIST = "simpleWeather/cityList";
     public static final String GET_BANNER_JSON = "banner/json";//获取Banner接口
     public static final String GET_WXARTICLE_CHAPTERS_JSON = "wxarticle/chapters/json";// 获取公众号列表
@@ -27,7 +31,10 @@ public class UrlConstant {
 
     public static final String GET_COLLECT_LIST = "lg/collect/list/%s/json";//获取收藏文章列表
 
-
+    /**
+     * Gank Api
+     */
+    public static final String GET_IMAGE_LIST = "api/data/福利/%s/%s";//获取福利图片
 
 
 }

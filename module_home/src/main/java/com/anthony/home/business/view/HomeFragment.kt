@@ -27,6 +27,7 @@ import com.anthony.home.business.contact.HomeContact
 import com.anthony.home.business.presenter.HomePresenter
 import com.anthony.home.imageloader.GlideImageLoader
 import com.youth.banner.Banner
+import com.youth.banner.transformer.ZoomOutSlideTransformer
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 
@@ -53,6 +54,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
     override fun initView() {
         headerView = LayoutInflater.from(mActivity).inflate(R.layout.layout_home_header, null)
         banner = headerView.findViewById(R.id.banner_home)
+        banner.setPageTransformer(false,ZoomOutSlideTransformer())
         setStatusBarTranslucent(0)
         val lp = rl_search_header.layoutParams as RelativeLayout.LayoutParams
         lp.topMargin = StatusBarUtil.getStatusBarHeight(mActivity)
@@ -181,19 +183,10 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
     }
 
     private fun gotoWebViewActivityFromBanner(bannerResult: BannerResult.DataBean?) {
-//        if (bannerResult == null) {
-//            return
-//        }
-//        val bundle = Bundle()
-//        bundle.putString(SyncStateContract.Constants.URL, bannerResult.url)
-//        bundle.putInt(SyncStateContract.Constants.ID, bannerResult.id)
-//        bundle.putString(SyncStateContract.Constants.AUTHOR, null)
-//        bundle.putString(Constants.TITLE, bannerResult.title)
-//        ARouter.getInstance()
-//                .build("/web/WebViewActivity")
-//                .with(bundle)
-//                .navigation()
-//        activity.overridePendingTransition(R.anim.anim_web_enter, R.anim.anim_alpha)
+        if (bannerResult == null) {
+            return
+        }
+        ARouter.getInstance().build(ARouterConstants.COMMON_X5WEB_ACTIVITY).withString("loadUrl", bannerResult.url).withString("webTitle", bannerResult.title).navigation()
 
     }
 
@@ -203,12 +196,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
      * @param weChatAuthorResult
      */
     private fun gotoWeChatArticleListActivity(weChatAuthorResult: WeChatAuthorResult.DataBean) {
-//        val bundle = Bundle()
-//        bundle.putSerializable("WeChatAuthorResult", weChatAuthorResult)
-//        ARouter.getInstance()
-//                .build("/wechat/WeChatArticleListActivity")
-//                .withBundle("bundle", bundle)
-//                .navigation()
+        ARouter.getInstance().build(ARouterConstants.HOME_WECHAT_ACTICLELIST_ACTIVITY).withInt("id", weChatAuthorResult.id).withString("title", weChatAuthorResult.name).navigation()
     }
 
     private fun gotoWebViewActivity(datasBean: HomeArticleResult.DataBean.DatasBean) {

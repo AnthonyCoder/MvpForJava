@@ -16,6 +16,7 @@
         <!--<activity android:name=".business.view.MainActivity"/>-->
 
         <activity android:name="com.anthony.home.business.view.TestActivity" />
+        <activity android:name=".business.view.WeChatArticleListActivity" />
 
     </application>
 </manifest>

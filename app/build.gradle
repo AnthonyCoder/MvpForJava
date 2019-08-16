@@ -47,7 +47,7 @@ dependencies {
     implementation project (':module_home')
     implementation project (':module_project')
     implementation project (':module_user')
-    implementation project (':module_other')
+    implementation project (':module_gank')
     api root ["arouter"]
     kapt root ["arouter-compiler"]
 }

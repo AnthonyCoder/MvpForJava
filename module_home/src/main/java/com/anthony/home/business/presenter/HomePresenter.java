@@ -1,7 +1,7 @@
 package com.anthony.home.business.presenter;
 
 import com.anthony.common.base.net.UrlConstant;
-import com.anthony.common.base.net.client.FormRequestClient;
+import com.anthony.common.base.net.client.WanAndroidFormRequestClient;
 import com.anthony.common.base.net.common.business.BasePresenter;
 import com.anthony.common.base.net.common.observer.AppObserver;
 import com.anthony.home.bean.BannerResult;
@@ -21,7 +21,7 @@ public class HomePresenter extends BasePresenter<HomeContact.View> implements Ho
 
     @Override
     public void getBanner() {
-        FormRequestClient.getInstance().executeGet(UrlConstant.GET_BANNER_JSON, null, new AppObserver<BannerResult>() {
+        WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_BANNER_JSON, null, new AppObserver<BannerResult>() {
             @Override
             public void onNext(BannerResult bannerResults) {
                 view.onBanner(bannerResults.getData());
@@ -32,7 +32,7 @@ public class HomePresenter extends BasePresenter<HomeContact.View> implements Ho
 
     @Override
     public void getWeChatAuthors() {
-        FormRequestClient.getInstance().executeGet(UrlConstant.GET_WXARTICLE_CHAPTERS_JSON, null, new AppObserver<WeChatAuthorResult>() {
+        WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_WXARTICLE_CHAPTERS_JSON, null, new AppObserver<WeChatAuthorResult>() {
             @Override
             public void onNext(WeChatAuthorResult weChatAuthorResult) {
                 view.onWeChatAuthors(weChatAuthorResult.getData());
@@ -43,7 +43,7 @@ public class HomePresenter extends BasePresenter<HomeContact.View> implements Ho
 
     @Override
     public void getHomeArticles(int page) {
-        FormRequestClient.getInstance().executeGet(formatUrl(UrlConstant.GET_ARTICLE_LIST_JSON,page+""), null, new AppObserver<HomeArticleResult>() {
+        WanAndroidFormRequestClient.getInstance().executeGet(formatUrl(UrlConstant.GET_ARTICLE_LIST_JSON,page+""), null, new AppObserver<HomeArticleResult>() {
             @Override
             public void onNext(HomeArticleResult homeArticleResult) {
                 view.onHomeArticles(homeArticleResult);
