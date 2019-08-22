@@ -44,7 +44,7 @@ public abstract class BaseNetClient{
                 .sslSocketFactory(SSLFactory.getDefaultSSLSocketFactory(),SSLFactory.getX509TrustManager())
                 .hostnameVerifier((hostname, session) -> true)//直接设置证书验证结果 若证书验证不通过 设置true即可通过
                 .retryOnConnectionFailure(true)//设置失败重连
-                .addNetworkInterceptor(new NetLogInterceptor())//设置网络日志
+                .addInterceptor(new NetLogInterceptor())//设置网络日志
                 .connectTimeout(HTTP_TIMEOUT_SECONDS, TimeUnit.SECONDS)
                 .readTimeout(READ_TIMEOUT_SECONDS,TimeUnit.SECONDS)
                 .proxy(Proxy.NO_PROXY)//禁用代理使用

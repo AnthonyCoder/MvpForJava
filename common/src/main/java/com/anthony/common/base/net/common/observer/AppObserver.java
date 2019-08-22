@@ -4,9 +4,12 @@ import com.anthony.common.R;
 import com.anthony.common.base.constant.Constant;
 import com.anthony.common.base.net.common.business.BaseView;
 import com.anthony.common.base.net.common.exception.ApiException;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.orhanobut.logger.Logger;
 
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 import io.reactivex.disposables.Disposable;
 
@@ -17,6 +20,9 @@ import io.reactivex.disposables.Disposable;
  */
 public abstract class AppObserver<T> extends BaseObserver<T> {
     private BaseView view = null;
+    private final String TYPE_CLASS_ENTITY_HEAD = "class";
+    private final String TYPE_LIST_ENTITY_HEAD = "java.util.List";
+    private final String TYPE_ARRAY_LIST_ENTITY_HEAD = "java.util.ArrayList";
 
     public AppObserver() {
     }
@@ -56,8 +62,17 @@ public abstract class AppObserver<T> extends BaseObserver<T> {
         }
 
     }
-
-    public Class<T> getEntityClass() {
-        return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+    public T getEntityData(String json){//这里是处理Json转换成实例对象或者集合的方法
+        Gson gson = new Gson();
+        T entityData = null;
+        ParameterizedType parameterizedType = ((ParameterizedType) getClass().getGenericSuperclass());
+        Type type = parameterizedType.getActualTypeArguments()[0];
+        if(type.toString().startsWith(TYPE_CLASS_ENTITY_HEAD)){//首先判断是否是对象形式的data
+            Class<T> tClass = (Class<T>) type;
+            entityData = gson.fromJson(json, tClass);
+        }else if(type.toString().startsWith(TYPE_LIST_ENTITY_HEAD)||type.toString().startsWith(TYPE_ARRAY_LIST_ENTITY_HEAD)){//如果是集合形式的data会走这里的异常 直接转集合就行了
+            entityData = gson.fromJson(json, TypeToken.get(type).getType());
+        }
+        return entityData;
     }
 }

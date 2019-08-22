@@ -1,7 +1,6 @@
 package com.anthony.common.base.net.client.base;
 
 import com.anthony.common.base.net.common.observer.AppObserver;
-import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,9 +50,8 @@ public abstract class FormRequestClient<M> extends BaseNetClient {
             @Override
             public void onNext(ResponseBody responseBody) {
                 try {
-                    String s = responseBody.string();
-                    Gson gson = new Gson();
-                    observer.onNext(gson.fromJson(s, observer.getEntityClass()));
+                    String json = responseBody.string();
+                    observer.onNext(observer.getEntityData(json));
                 } catch (Exception e) {
                     observer.onError(e);
                 }

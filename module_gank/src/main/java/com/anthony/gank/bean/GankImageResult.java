@@ -46,7 +46,6 @@ public class GankImageResult extends BaseResponseModel {
          * used : true
          * who : lijinshanmx
          */
-
         private String _id;
         private String createdAt;
         private String desc;
@@ -56,6 +55,8 @@ public class GankImageResult extends BaseResponseModel {
         private String url;
         private boolean used;
         private String who;
+        private int with;
+        private int height;
 
         public String get_id() {
             return _id;
@@ -127,6 +128,22 @@ public class GankImageResult extends BaseResponseModel {
 
         public void setWho(String who) {
             this.who = who;
+        }
+
+        public int getWith() {
+            return with;
+        }
+
+        public void setWith(int with) {
+            this.with = with;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
         }
     }
 }

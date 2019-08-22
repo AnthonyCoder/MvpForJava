@@ -37,4 +37,10 @@ public class UrlConstant {
     public static final String GET_IMAGE_LIST = "api/data/福利/%s/%s";//获取福利图片
 
 
+    /***
+     * 开眼 API
+     */
+    public static final String GET_CATEGORIES = "v4/categories";//获取视频分类
+
+
 }
