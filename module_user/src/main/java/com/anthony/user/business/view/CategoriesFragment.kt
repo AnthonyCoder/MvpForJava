@@ -2,6 +2,8 @@ package com.anthony.project.business.view
 
 import androidx.recyclerview.widget.GridLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
+import com.anthony.common.adapter.base.BaseQuickAdapter
 import com.anthony.common.base.constant.ARouterConstants
 import com.anthony.common.base.view.BaseFragment
 import com.anthony.user.R
@@ -10,6 +12,7 @@ import com.anthony.user.bean.GetCategoriesResult
 import com.anthony.user.business.contact.CategoriesContact
 import com.anthony.user.business.presenter.CategoriesPresenter
 import kotlinx.android.synthetic.main.fragment_categories.*
+import java.util.*
 
 /**
  * 创建时间:2019/8/9
@@ -17,9 +20,10 @@ import kotlinx.android.synthetic.main.fragment_categories.*
  * 功能描述：
  */
 @Route(path = ARouterConstants.USER_MAIN_FRAGMENT)
-class CategoriesFragment: BaseFragment<CategoriesPresenter>(), CategoriesContact.View{
+class CategoriesFragment : BaseFragment<CategoriesPresenter>(), CategoriesContact.View {
 
-    private var categoriesAdapter: CategoriesAdapter? =null
+    private var categoriesAdapter: CategoriesAdapter? = null
+    private val dataList = ArrayList<GetCategoriesResult>()
 
     override fun getmPresenter(): CategoriesPresenter = CategoriesPresenter(this)
 
@@ -33,8 +37,13 @@ class CategoriesFragment: BaseFragment<CategoriesPresenter>(), CategoriesContact
         mPresenter.getCategories()
     }
 
-    override fun setCategories(dataList: MutableList<GetCategoriesResult>?) {
+    override fun setCategories(list: MutableList<GetCategoriesResult>) {
+        dataList.clear()
+        dataList.addAll(list)
         categoriesAdapter = CategoriesAdapter(dataList)
+        categoriesAdapter!!.onItemClickListener = BaseQuickAdapter.OnItemClickListener { adapter, view, position ->
+            ARouter.getInstance().build(ARouterConstants.KAIYAN_VIDEOLIST_ACTIVITY).withInt("id", dataList[position].id).navigation()
+        }
         rv_categories.adapter = categoriesAdapter
     }
 

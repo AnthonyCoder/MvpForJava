@@ -1,2 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.anthony.user" />
+    package="com.anthony.user" >
+
+    <application>
+        <activity android:name=".business.view.VideoListActivity" />
+        <activity android:name=".business.view.VideoDetailActivity" />
+    </application>
+</manifest>

@@ -29,7 +29,7 @@ public interface ApiService {
     @POST("{url}")
     Observable<ResponseBody> executePost(
             @Path(value = "url",encoded = true) String url,
-            @FieldMap Map<String, Object> maps);
+            @QueryMap Map<String, Object> maps);
 
     @POST("{url}")
     Observable<ResponseBody> executePost(

@@ -18,6 +18,7 @@ public class ARouterConstants {
 
     public static final String GANK_MAIN_FRAGMENT="/gank/main/fragment";
     public static final String USER_MAIN_FRAGMENT="/user/main/fragment";
+    public static final String KAIYAN_VIDEOLIST_ACTIVITY="/user/videolist/activity";
 
 
     public static final String COMMON_X5WEB_ACTIVITY="/common/x5web/activity";

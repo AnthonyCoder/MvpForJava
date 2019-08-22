@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_cover"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/black_alph_30"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_gravity="center_horizontal"
+            android:textSize="16sp"
+            android:text="泰国催泪励志广告：坐了一天冷板凳，儿子你难过吗？"/>
+        <TextView
+            android:id="@+id/tv_dec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_f4f5f6"
+            android:layout_marginTop="6dp"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:textSize="14sp"
+            android:layout_gravity="center_horizontal"
+            android:text="以梅西作为目标，每天辛苦训练的儿子，终于迎来了关键的一场大赛。在观众席上，老爸被朋友问道哪个是儿子，但是看着坐在预备席上久久未能上场的儿子，爸爸沉默了……"/>
+    </LinearLayout>
+</RelativeLayout>

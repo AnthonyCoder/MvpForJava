@@ -27,7 +27,7 @@ import java.util.*
 class WeChatArticleListActivity:BaseActivity<WeChatArticleListPresenter>(),WeChatArticleListContact.View {
 
 
-    var page =0
+    private var page =0
     @JvmField
     @Autowired(name = "id",required = true)
     var id = 0
@@ -62,6 +62,9 @@ class WeChatArticleListActivity:BaseActivity<WeChatArticleListPresenter>(),WeCha
 
     override fun initData() {
         ARouter.getInstance().inject(this)
+        title?.let {
+            tv_title.text = title
+        }
         mPresenter.getWeChatArticle(id, page)
     }
 

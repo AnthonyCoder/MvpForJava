@@ -41,6 +41,7 @@ public class UrlConstant {
      * 开眼 API
      */
     public static final String GET_CATEGORIES = "v4/categories";//获取视频分类
+    public static final String POST_CATEGORIES_VIDEO_LIST = "v4/categories/videoList";//获取视频分类
 
 
 }
