@@ -1,5 +1,6 @@
 package com.anthony.common.base.view;
 
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -18,6 +19,7 @@ public abstract class BaseWebActivity<P extends BasePresenter>  extends BaseActi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFormat(PixelFormat.TRANSLUCENT);
         if(getLoadUrl()!=null&&getX5WebView()!=null){
             getX5WebView().loadUrl(getLoadUrl());
         }

@@ -40,6 +40,7 @@ public class X5WebView extends WebView {
 		webSetting.setBuiltInZoomControls(true);
 		webSetting.setUseWideViewPort(true);
 		webSetting.setSupportMultipleWindows(true);
+		webSetting.setMixedContentMode(android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
 		// webSetting.setLoadWithOverviewMode(true);
 		webSetting.setAppCacheEnabled(true);
 		// webSetting.setDatabaseEnabled(true);
