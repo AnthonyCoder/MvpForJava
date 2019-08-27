@@ -1,7 +1,7 @@
 package com.anthony.user.business.presenter;
 
 import com.anthony.common.base.net.UrlConstant;
-import com.anthony.common.base.net.client.BaobabFormRequestClient;
+import com.anthony.common.base.net.client.form.BaobabFormRequestClient;
 import com.anthony.common.base.net.common.business.BasePresenter;
 import com.anthony.common.base.net.common.observer.AppObserver;
 import com.anthony.user.bean.GetCategoriesResult;

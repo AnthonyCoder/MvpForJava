@@ -3,6 +3,5 @@
 
     <application>
         <activity android:name=".business.view.VideoListActivity" />
-        <activity android:name=".business.view.VideoDetailActivity" />
     </application>
 </manifest>

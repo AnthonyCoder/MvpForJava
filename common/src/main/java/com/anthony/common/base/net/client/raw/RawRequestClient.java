@@ -1,8 +1,10 @@
-package com.anthony.common.base.net.client.base;
+package com.anthony.common.base.net.client.raw;
 
+
+import com.anthony.common.base.net.client.base.BaseNetClient;
 import com.anthony.common.base.net.common.observer.AppObserver;
+import com.anthony.common.base.net.model.BaseRequesModel;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -10,35 +12,36 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 
 /**
  * 创建时间:2019/8/6
  * 创建人：anthony.wang
- * 功能描述：表单提交的请求类
+ * 功能描述：raw方式的json提交的请求类
  */
-public abstract class FormRequestClient<M> extends BaseNetClient {
+public abstract class RawRequestClient<M,T extends BaseRequesModel> extends BaseNetClient {
 
+    public Observable executeGet(String url, T requestModel, AppObserver<M> observer){
+        return requestData(RequestType.GET,null,url,requestModel,observer);
+    }
+    public Observable executePost(String url,T requestModel, AppObserver<M> observer){
+        return requestData(RequestType.POST,null,url,requestModel,observer);
+    }
+    public Observable executeGetWithHeader(Map<String,String> headerMap,String url,T requestModel, AppObserver<M> observer){
+        return requestData(RequestType.GET,headerMap,url,requestModel,observer);
+    }
+    public Observable executePostWithHeader(Map<String,String> headerMap,String url,T requestModel, AppObserver<M> observer){
+        return requestData(RequestType.POST,headerMap,url,requestModel,observer);
+    }
 
-    public Observable executeGet(String url,Map<String,Object> params, AppObserver<M> observer){
-        return requestData(RequestType.GET,null,url,params,observer);
-    }
-    public Observable executePost(String url,Map<String,Object> params, AppObserver<M> observer){
-        return requestData(RequestType.POST,null,url,params,observer);
-    }
-    public Observable executeGetWithHeader(Map<String,String> headerMap,String url,Map<String,Object> params, AppObserver<M> observer){
-        return requestData(RequestType.GET,headerMap,url,params,observer);
-    }
-    public Observable executePostWithHeader(Map<String,String> headerMap,String url,Map<String,Object> params, AppObserver<M> observer){
-        return requestData(RequestType.POST,headerMap,url,params,observer);
-    }
-
-    private Observable requestData(RequestType requestType,Map<String,String> headerMap, String url, Map<String, Object> params, AppObserver<M> observer) {
+    private Observable requestData(RequestType requestType,Map<String,String> headerMap, String url,T requestModel, AppObserver<M> observer) {
         if (requestType == null) {
             requestType = RequestType.GET;
         }
-        if(params == null){
-            params = new HashMap<>();
+        RequestBody requestBody = null;
+        if(requestModel != null){
+            requestBody = getRequestBodyFromObject(requestModel);
         }
         Observable requestObservable = null;
         Observer<ResponseBody> responseBodyObserver = new Observer<ResponseBody>() {
@@ -70,11 +73,11 @@ public abstract class FormRequestClient<M> extends BaseNetClient {
         switch (requestType) {
             case GET:
                 if(headerMap!=null){
-                    requestObservable = apiService.executeGetWithHeader(headerMap,url, params)
+                    requestObservable = apiService.executeGetWithHeader(headerMap,url, requestBody)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread());
                 }else{
-                    requestObservable = apiService.executeGet(url, params)
+                    requestObservable = apiService.executeGet(url, requestBody)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread());
                 }
@@ -82,11 +85,11 @@ public abstract class FormRequestClient<M> extends BaseNetClient {
                 break;
             case POST:
                 if(headerMap!=null) {
-                    requestObservable = apiService.executePostWithHeader(headerMap,url, params)
+                    requestObservable = apiService.executePostWithHeader(headerMap,url, requestBody)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread());
                 }else{
-                    requestObservable = apiService.executePost(url, params)
+                    requestObservable = apiService.executePost(url, requestBody)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread());
 
@@ -98,5 +101,4 @@ public abstract class FormRequestClient<M> extends BaseNetClient {
         }
         return requestObservable;
     }
-
 }

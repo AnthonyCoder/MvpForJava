@@ -38,10 +38,19 @@ class MainActivity : BaseActivity<BasePresenter<BaseView>>() {
         var projectFragment = getFragment(ARouterConstants.PROJECT_MAIN_FRAGMENT)
         var treeFragment = getFragment(ARouterConstants.GANK_MAIN_FRAGMENT)
         var userFragment = getFragment(ARouterConstants.USER_MAIN_FRAGMENT)
-        fragments = arrayListOf(homeFragment,
-                projectFragment,
-                treeFragment,
-                userFragment)
+        fragments = arrayListOf()
+        homeFragment?.let {
+            fragments.add(it)
+        }
+        projectFragment?.let {
+            fragments.add(it)
+        }
+        treeFragment?.let {
+            fragments.add(it)
+        }
+        userFragment?.let {
+            fragments.add(it)
+        }
         for (i in 0 until menuTitles.size) {
             tabEntitys.add(TabEntity(menuTitles[i], selectIconIds[i], unSelectIconIds[i]))
         }

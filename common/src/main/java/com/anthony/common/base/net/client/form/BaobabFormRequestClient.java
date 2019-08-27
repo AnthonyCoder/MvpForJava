@@ -1,7 +1,6 @@
-package com.anthony.common.base.net.client;
+package com.anthony.common.base.net.client.form;
 
 import com.anthony.common.base.net.Protocols;
-import com.anthony.common.base.net.client.base.FormRequestClient;
 
 import org.jetbrains.annotations.NotNull;
 

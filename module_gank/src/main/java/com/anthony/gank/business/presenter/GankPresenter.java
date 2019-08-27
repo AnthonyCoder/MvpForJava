@@ -2,7 +2,7 @@ package com.anthony.gank.business.presenter;
 
 
 import com.anthony.common.base.net.UrlConstant;
-import com.anthony.common.base.net.client.GankFormRequestClient;
+import com.anthony.common.base.net.client.form.GankFormRequestClient;
 import com.anthony.common.base.net.common.business.BasePresenter;
 import com.anthony.common.base.net.common.observer.AppObserver;
 import com.anthony.gank.bean.GankImageResult;

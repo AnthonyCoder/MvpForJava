@@ -3,10 +3,11 @@ package com.anthony.common.base.net.client.base;
 
 import com.anthony.common.base.BaseApplication;
 import com.anthony.common.base.constant.Constant;
-import com.anthony.common.base.net.Protocols;
 import com.anthony.common.base.net.api.ApiService;
 import com.anthony.common.base.net.client.intercept.NetLogInterceptor;
 import com.anthony.common.base.net.client.ssl.SSLFactory;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -16,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -31,14 +33,15 @@ public abstract class BaseNetClient{
 
     protected abstract Cache getCache();//缓存对象
     protected Cache defaultCahe;
-    protected String defaultBaseUrl = Protocols.WAN_ANDROID_BASE_RELEASE_API_URL;
     private static final int HTTP_TIMEOUT_SECONDS = 90;//超时时间（s）
     private static final int READ_TIMEOUT_SECONDS = 90;//超时时间（s）
     protected static final long DEFAULT_HTTP_CACHE_LONG_SIZE = 1024 * 1024 * 100;//最大缓存大小
     private Retrofit mRetrofit;
     protected ApiService apiService;
+    protected Gson mGson;
 
     protected BaseNetClient() {
+        mGson = new GsonBuilder().disableHtmlEscaping().create();
         defaultCahe = new Cache(new File(BaseApplication.getApplication().getCacheDir(), Constant.HTTP_CACHE),DEFAULT_HTTP_CACHE_LONG_SIZE);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().cache(getCache()==null?defaultCahe:getCache())
                 .sslSocketFactory(SSLFactory.getDefaultSSLSocketFactory(),SSLFactory.getX509TrustManager())
@@ -61,5 +64,11 @@ public abstract class BaseNetClient{
     public enum RequestType {
         GET, POST
     }
-
+    public  RequestBody getRequestBodyFromObject(Object object) {
+        RequestBody requestBody = RequestBody.create(
+                okhttp3.MediaType.parse("application/json; charset=utf-8"),
+                mGson.toJson(object)
+        );
+        return requestBody;
+    }
 }

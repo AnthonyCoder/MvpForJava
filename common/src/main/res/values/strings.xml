@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">MvpForJava</string>
     <string name="no_request_body">无请求体</string>
     <string name="no_request_header">无请求头</string>
     <string name="no_response_header">无响应头</string>

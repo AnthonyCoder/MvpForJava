@@ -17,6 +17,11 @@ public class BaseResponseModel {
     private int errorCode;
     private String errorMsg;
 
+    private boolean IsSuccess;
+    private String ErrorCode;
+    private String ErrorMessage;
+
+
     public int getErrorCode() {
         return errorCode;
     }

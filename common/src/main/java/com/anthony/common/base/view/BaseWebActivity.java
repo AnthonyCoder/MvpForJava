@@ -24,4 +24,10 @@ public abstract class BaseWebActivity<P extends BasePresenter>  extends BaseActi
             getX5WebView().loadUrl(getLoadUrl());
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        getX5WebView().destroy();
+    }
 }

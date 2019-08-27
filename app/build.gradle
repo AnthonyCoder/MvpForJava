@@ -44,10 +44,13 @@ kapt {
 
 dependencies {
     implementation project(':common')
-    implementation project (':module_home')
-    implementation project (':module_project')
-    implementation project (':module_user')
-    implementation project (':module_gank')
+    if(!isRunAlone.toBoolean()){
+        implementation project (':module_home')
+        implementation project (':module_project')
+        implementation project (':module_user')
+        implementation project (':module_gank')
+    }
+
     api root ["arouter"]
     kapt root ["arouter-compiler"]
 }
