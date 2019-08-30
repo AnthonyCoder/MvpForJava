@@ -1,7 +1,7 @@
 package com.anthony.project.business.contact;
 
 import com.anthony.common.base.net.common.business.BaseView;
-import com.anthony.project.business.bean.ProjectListResult;
+import com.anthony.project.bean.ProjectListResult;
 
 import java.util.List;
 

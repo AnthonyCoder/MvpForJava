@@ -28,6 +28,9 @@ public abstract class BaseWebActivity<P extends BasePresenter>  extends BaseActi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        getX5WebView().destroy();
+        if(getX5WebView()!=null){
+            getX5WebView().destroy();
+        }
+
     }
 }

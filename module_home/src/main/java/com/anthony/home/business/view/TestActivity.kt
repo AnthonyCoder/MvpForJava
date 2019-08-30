@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.anthony.common.base.constant.ARouterConstants
 import com.anthony.common.base.net.UrlConstant
-import com.anthony.common.base.net.client.raw.TestRawRequestClient
+import com.anthony.common.base.net.client.request.raw.child.TestRawRequestClient
 import com.anthony.common.base.net.common.observer.AppObserver
 import com.anthony.home.R
 import com.anthony.home.bean.MessageLogResult

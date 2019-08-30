@@ -13,7 +13,7 @@
             <option value="$PROJECT_DIR$/module_gank" />
             <option value="$PROJECT_DIR$/module_home" />
             <option value="$PROJECT_DIR$/module_project" />
-            <option value="$PROJECT_DIR$/module_user" />
+            <option value="$PROJECT_DIR$/module_video" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

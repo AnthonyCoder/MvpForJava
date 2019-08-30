@@ -18,9 +18,6 @@ class GankAdapter : BaseQuickAdapter<GankImageResult.ResultsBean, BaseViewHolder
     override fun convert(helper: BaseViewHolder, item: GankImageResult.ResultsBean) {
         Glide.with(mContext)
                 .load(item.url)
-//                .skipMemoryCache(true)
-//                .override(item.with,item.height)
-//                .thumbnail(0.1f)
                 .into(helper.getView(R.id.iv_image))
     }
 

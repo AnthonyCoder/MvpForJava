@@ -20,14 +20,14 @@ import kotlinx.android.synthetic.main.activity_common_webpage.*
 class CommonWebViewActivity : BaseWebActivity<BasePresenter<BaseView>>() {
 
     @JvmField
-    @Autowired(name = "loadUrl",required = true)
-    var loadUrl:String? = null
+    @Autowired(name = "url",required = true)
+    var url:String? = null
 
     @JvmField
     @Autowired(name = "webTitle",required = false)
     var webTitle:String? = null
 
-    override fun getLoadUrl(): String? = loadUrl
+    override fun getLoadUrl(): String? = url
 
     override fun getX5WebView(): X5WebView = xv_web
 

@@ -6,8 +6,8 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.anthony.common.base.constant.ARouterConstants
 import com.anthony.common.base.view.BaseFragment
 import com.anthony.project.R
-import com.anthony.project.business.adapter.ProjectPagerAdapter
-import com.anthony.project.business.bean.ProjectTreeResult
+import com.anthony.project.adapter.ProjectPagerAdapter
+import com.anthony.project.bean.ProjectTreeResult
 import com.anthony.project.business.contact.ProjectContact
 import com.anthony.project.business.presenter.ProjectPresenter
 import com.anthony.project.business.view.data.ProjectPageItem

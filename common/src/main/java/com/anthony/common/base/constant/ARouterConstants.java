@@ -21,5 +21,5 @@ public class ARouterConstants {
     public static final String KAIYAN_VIDEOLIST_ACTIVITY="/user/videolist/activity";
 
 
-    public static final String COMMON_X5WEB_ACTIVITY="/common/x5web/activity";
+    public static final String COMMON_X5WEB_ACTIVITY= "/common/x5web/activity";
 }

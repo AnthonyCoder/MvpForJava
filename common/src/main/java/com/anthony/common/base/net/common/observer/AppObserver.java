@@ -27,11 +27,11 @@ public abstract class AppObserver<T> extends BaseObserver<T> {
     public AppObserver() {
     }
 
-    public <V extends BaseView>AppObserver(V view) {
+    public AppObserver(BaseView view) {
         this.view = view;
         onload(null);
     }
-    public <V extends BaseView>AppObserver(V view,String loadTips) {
+    public AppObserver(BaseView view,String loadTips) {
         this.view = view;
         onload(loadTips);
     }

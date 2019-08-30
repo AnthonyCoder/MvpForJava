@@ -33,7 +33,7 @@ import okio.BufferedSource;
  * 功能描述：该拦截器主要复制打印请求参数和响应参数等信息 方便开发者调试
  */
 public class NetLogInterceptor implements Interceptor {
-    private static final Charset UTF8 = Charset.forName("UTF-8");
+    private final Charset UTF8 = Charset.forName("UTF-8");
     private boolean isOpenLog = true;
 
     public void setOpenLog(boolean openLog) {
@@ -216,10 +216,7 @@ public class NetLogInterceptor implements Interceptor {
         if (jsonElement == null) {
             return false;
         }
-        if (!jsonElement.isJsonObject()) {
-            return false;
-        }
-        return true;
+        return jsonElement.isJsonObject();
     }
     private boolean bodyEncoded(Headers headers) {
         String contentEncoding = headers.get("Content-Encoding");

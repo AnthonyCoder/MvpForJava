@@ -80,7 +80,7 @@ class WeChatArticleListActivity:BaseActivity<WeChatArticleListPresenter>(),WeCha
         if (weChatArticleAdapter == null) {
             weChatArticleAdapter = WeChatArticleAdapter(dataList)
             weChatArticleAdapter!!.onItemClickListener = BaseQuickAdapter.OnItemClickListener { _, _, position ->
-                ARouter.getInstance().build(ARouterConstants.COMMON_X5WEB_ACTIVITY).withString("loadUrl", dataList[position].link).withString("webTitle", dataList[position].title).navigation()
+                ARouter.getInstance().build(ARouterConstants.COMMON_X5WEB_ACTIVITY).withString("url", dataList[position].link).withString("webTitle", dataList[position].title).navigation()
             }
             rv_wechat_article.adapter = weChatArticleAdapter
         } else {

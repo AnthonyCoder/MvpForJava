@@ -186,7 +186,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
         if (bannerResult == null) {
             return
         }
-        ARouter.getInstance().build(ARouterConstants.COMMON_X5WEB_ACTIVITY).withString("loadUrl", bannerResult.url).withString("webTitle", bannerResult.title).navigation()
+        ARouter.getInstance().build(ARouterConstants.COMMON_X5WEB_ACTIVITY).withString("url", bannerResult.url).withString("webTitle", bannerResult.title).navigation()
 
     }
 
@@ -200,7 +200,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
     }
 
     private fun gotoWebViewActivity(datasBean: HomeArticleResult.DataBean.DatasBean) {
-        ARouter.getInstance().build(ARouterConstants.COMMON_X5WEB_ACTIVITY).withString("loadUrl", datasBean.link).withString("webTitle", datasBean.title).navigation()
+        ARouter.getInstance().build(ARouterConstants.COMMON_X5WEB_ACTIVITY).withString("url", datasBean.link).withString("webTitle", datasBean.title).navigation()
     }
 
 }

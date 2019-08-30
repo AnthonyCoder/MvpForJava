@@ -11,8 +11,8 @@ import com.anthony.common.base.constant.ARouterConstants
 import com.anthony.common.base.view.BaseLazyFragment
 import com.anthony.common.widgets.LinearItemDecoration
 import com.anthony.project.R
-import com.anthony.project.business.adapter.ProjectRecyclerAdapter
-import com.anthony.project.business.bean.ProjectListResult
+import com.anthony.project.adapter.ProjectRecyclerAdapter
+import com.anthony.project.bean.ProjectListResult
 import com.anthony.project.business.contact.ProjectPageContact
 import com.anthony.project.business.presenter.ProjectPagePresenter
 import kotlinx.android.synthetic.main.fragment_project_page.*
@@ -80,6 +80,6 @@ class ProjectPageFragment: BaseLazyFragment<ProjectPagePresenter>(),ProjectPageC
      * 跳转到 WebViewActivity
      */
     private fun gotoWebViewActivity(datasBean: ProjectListResult.DataBean.DatasBean) {
-        ARouter.getInstance().build(ARouterConstants.COMMON_X5WEB_ACTIVITY).withString("loadUrl", datasBean.link).withString("webTitle", datasBean.title).navigation()
+        ARouter.getInstance().build(ARouterConstants.COMMON_X5WEB_ACTIVITY).withString("url", datasBean.link).withString("webTitle", datasBean.title).navigation()
     }
 }
