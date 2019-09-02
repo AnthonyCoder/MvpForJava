@@ -1,8 +1,6 @@
 package com.anthony.project.business.view
 
 import android.graphics.Color
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -10,6 +8,7 @@ import com.anthony.common.adapter.base.BaseQuickAdapter
 import com.anthony.common.base.constant.ARouterConstants
 import com.anthony.common.base.view.BaseLazyFragment
 import com.anthony.common.widgets.LinearItemDecoration
+import com.anthony.common.widgets.recycler.StateType
 import com.anthony.project.R
 import com.anthony.project.adapter.ProjectRecyclerAdapter
 import com.anthony.project.bean.ProjectListResult
@@ -40,27 +39,26 @@ class ProjectPageFragment: BaseLazyFragment<ProjectPagePresenter>(),ProjectPageC
     override fun getLayoutId() = R.layout.fragment_project_page
 
     override fun initView() {
-        srl_project.setOnRefreshListener {
+        arv_project_list.setOnRefreshListener {
             page = 0
             mPresenter.getProject(pageId,page)
         }
-        srl_project.setOnLoadMoreListener {
+        arv_project_list.setOnLoadMoreListener {
             page++
             mPresenter.getProject(pageId,page)
         }
-        rv_home_page.addItemDecoration(LinearItemDecoration(mActivity)
+        arv_project_list.addItemDecoration(LinearItemDecoration(mActivity)
                 .height(0.8f)    // 0.5dp
                 .color(Color.parseColor("#aacccccc"))  // color 的 int 值，不是 R.color 中的值
                 .margin(12, 12))
-        rv_home_page.layoutManager = LinearLayoutManager(mActivity,RecyclerView.VERTICAL,false)
     }
 
     override fun initData() {
         ARouter.getInstance().inject(this)
     }
     override fun projectList(modelList: MutableList<ProjectListResult.DataBean.DatasBean>) {
-        srl_project.finishRefresh()
-        srl_project.finishLoadMore()
+        arv_project_list.setStateType(StateType.NORMAL)
+        arv_project_list.loadOver()
         if(page == 0){
             dataList.clear()
         }
@@ -70,11 +68,22 @@ class ProjectPageFragment: BaseLazyFragment<ProjectPagePresenter>(),ProjectPageC
             projectRecyclerAdapter!!.onItemClickListener = BaseQuickAdapter.OnItemClickListener { _, _, position ->
                 gotoWebViewActivity(dataList[position])
             }
-            rv_home_page.adapter = projectRecyclerAdapter
+            arv_project_list.setAdapter(projectRecyclerAdapter)
         } else {
             projectRecyclerAdapter!!.setNewData(dataList)
         }
     }
+
+    override fun loadError(errorMsg: Any?) {
+        super.loadError(errorMsg)
+        arv_project_list.loadOver()
+        arv_project_list.setStateType(StateType.ERROR)
+        arv_project_list.setErrorButtonOnclickListener{
+            page = 0
+            mPresenter.getProject(pageId,page)
+        }
+    }
+
     override fun getmPresenter():ProjectPagePresenter = ProjectPagePresenter(this)
     /**
      * 跳转到 WebViewActivity

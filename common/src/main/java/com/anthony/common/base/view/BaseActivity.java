@@ -80,6 +80,10 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     @Override
     public void loadError(Object errorMsg) {
+        if (loadingDialog != null) {
+            loadingDialog.dismiss();
+            loadingDialog = null;
+        }
         ToastUtils.show("请求出错");
     }
 

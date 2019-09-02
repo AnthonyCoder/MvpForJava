@@ -33,8 +33,8 @@ public abstract class BaseNetClient{
 
     protected abstract Cache getCache();//缓存对象
     protected Cache defaultCahe;
-    private static final int HTTP_TIMEOUT_SECONDS = 90;//超时时间（s）
-    private static final int READ_TIMEOUT_SECONDS = 90;//超时时间（s）
+    private static final int HTTP_TIMEOUT_SECONDS = 10;//超时时间（s）
+    private static final int READ_TIMEOUT_SECONDS = 10;//超时时间（s）
     protected static final long DEFAULT_HTTP_CACHE_LONG_SIZE = 1024 * 1024 * 100;//最大缓存大小
     private Retrofit mRetrofit;
     protected ApiService apiService;

@@ -25,7 +25,7 @@ public class ProjectPagePresenter extends BasePresenter<ProjectPageContact.View>
     public void getProject(int id, int page) {
         HashMap<String,Object> params = new HashMap<>();
         params.put("cid",id);
-        WanAndroidFormRequestClient.getInstance().executeGet(formatUrl(UrlConstant.GET_PROJECT,page+""), params, new AppObserver<ProjectListResult>() {
+        WanAndroidFormRequestClient.getInstance().executeGet(formatUrl(UrlConstant.GET_PROJECT,122+""), params, new AppObserver<ProjectListResult>(view) {
             @Override
             public void onNext(ProjectListResult treeResult) {
                 view.projectList(treeResult.getData().getDatas());

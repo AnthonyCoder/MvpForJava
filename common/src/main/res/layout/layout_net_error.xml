@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_super_light"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_poor_internet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_poor_internet_96dp"
+        android:drawablePadding="12dp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="12dp"
+        android:paddingTop="80dp"
+        android:paddingRight="12dp"
+        android:text="@string/oops_please_check_your_internet_connection"
+        android:textColor="@color/gray_very_little_light"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_error_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_bg_corner_transparent_stroke_gray"
+        android:gravity="center"
+        android:minWidth="80dp"
+        android:paddingLeft="12dp"
+        android:paddingTop="8dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="8dp"
+        android:text="@string/refresh"
+        android:textColor="@color/gray_super_little_light"
+        android:textSize="16sp" />
+
+</LinearLayout>

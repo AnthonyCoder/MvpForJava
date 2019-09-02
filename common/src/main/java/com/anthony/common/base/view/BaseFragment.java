@@ -92,6 +92,10 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment  im
     @Override
     public void loadError(Object errorMsg) {
         ToastUtils.show("请求出错");
+        if (loadingDialog != null) {
+            loadingDialog.dismiss();
+            loadingDialog = null;
+        }
     }
 
     @Override

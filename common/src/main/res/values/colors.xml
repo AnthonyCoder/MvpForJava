@@ -16,4 +16,9 @@
     <color name="black_999">#ff999999</color>
     <color name="white_fc">#fffcfcfc</color>
     <color name="white">#ffffff</color>
+    <color name="gray_e5">#E5E5E5</color>
+    <color name="gray_super_light">#EFEFEF</color>
+    <color name="gray_very_little_light">#818181</color>
+    <color name="gray_normal">#616161</color>
+    <color name="gray_super_little_light">#3A3A3A</color>
 </resources>
