@@ -1,0 +1,2 @@
+# MvpForJava
+以RxJava2+Retrofit2+OkHttp3作为网络框架搭建的MVP项目，以 autodispose 来管理请求的生命周期防止内存泄露，封装了基本网络配置（支持多服务器BaseUrl扩展，支持Https证书自由配置和默认切换，支持异常信息自定义），支持表单提交和json提交两种提交方式，支持请求url动态扩展，支持打印请求响应日志监听
