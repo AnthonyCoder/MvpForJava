@@ -1,2 +1,11 @@
-# MvpForJava
-以RxJava2+Retrofit2+OkHttp3作为网络框架搭建的MVP项目，以 autodispose 来管理请求的生命周期防止内存泄露，封装了基本网络配置（支持多服务器BaseUrl扩展，支持Https证书自由配置和默认切换，支持异常信息自定义），支持表单提交和json提交两种提交方式，支持请求url动态扩展，支持打印请求响应日志监听
+## 使用Java构建的一个模块化的MVP的项目
+
+##### 个人项目仅供学习使用，感谢以下开放Api：
+
+[玩Android](https://www.wanandroid.com/blog/show/2)
+
+[干货集中营](http://gank.io/api)
+
+[开眼视频](https://github.com/tonycheng93/Eyepetizer/blob/master/doc/%E5%BC%80%E7%9C%BC%E8%A7%86%E9%A2%91API%E6%96%87%E6%A1%A3.md)
+
+包含功能：

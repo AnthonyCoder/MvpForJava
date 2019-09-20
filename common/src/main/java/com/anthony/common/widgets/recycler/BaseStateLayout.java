@@ -11,7 +11,7 @@ import com.anthony.common.widgets.recycler.stateview.ErrorView;
 /**
  * 创建时间:2019/9/2
  * 创建人：anthony.wang
- * 功能描述：
+ * 功能描述：状态布局的父类，提供给需要带状态的view继承
  */
 public abstract class BaseStateLayout extends FrameLayout {
     private View normalView;

@@ -28,5 +28,14 @@
         <meta-data
             android:name="design_height_in_dp"
             android:value="640"/>
+        <activity android:name=".business.view.AloneActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

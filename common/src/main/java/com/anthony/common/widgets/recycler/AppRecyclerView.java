@@ -16,7 +16,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 /**
  * 创建时间:2019/9/2
  * 创建人：anthony.wang
- * 功能描述：
+ * 功能描述：随便写的一个带有状态的RecyclerView,可扩展状态
  */
 public class AppRecyclerView extends BaseStateLayout {
     private View appRecyclerView ;

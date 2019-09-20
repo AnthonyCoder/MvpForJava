@@ -22,17 +22,17 @@
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name="com.anthony.home.business.view.MainActivity"
+        <activity android:name=".business.view.AloneActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name="com.anthony.home.business.view.TestActivity" />
         <activity android:name=".business.view.WeChatArticleListActivity" />
         <meta-data
