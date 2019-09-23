@@ -51,21 +51,60 @@
 ## lib依赖关系
 ![](https://github.com/AnthonyCoder/MvpForJava/blob/master/gif/model_relationship.png)
 
-### 快速集成到新项目中使用
-##### 1.clone到本地后，复制config.gradle文件，然后在项目build.gradle中引入config.gradle
+## 快速集成到新项目中使用
+#### 1.clone到本地后，复制config.gradle文件，然后在项目build.gradle中引入config.gradle
 ```
 apply from: "config.gradle"
 ```
-##### 2.复制 common 模块并添加到项目中
-##### 3.业务模块依赖common模块
-##### 4.创建View层Activity继承BaseActivity，同时绑定Presenter
-##### 5.创建Contact接口类，约定View层接口和Presenter层接口
-##### 6.创建Presenter实现类，在Presenter实现类里面处理逻辑，通过传递进来的View实例通知View层
+#### 2.复制 common 模块并添加到项目中，然后业务模块依赖common模块
+#### 3.创建View层Activity继承BaseActivity，同时绑定Presenter
+#### 4.创建Contact接口类，约定View层接口和Presenter层接口
+#### 5.创建Presenter实现类，在Presenter实现类里面处理逻辑，通过传递进来的View实例通知View层
 
+## 一些问题
+#### 1.ARoter报错
+先检查一下所有模块是否都在build.gradle文件中添加了
+```
+apply plugin: 'kotlin-kapt'
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+```
+若项目未使用Kotlin则以上代码换做
+```
+android {
+    defaultConfig {
+        ...
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+}
+```
+检查如果以上问题不存在的话，再检查**是否每个模块都直接依赖了arouter-compiler**，必须是直接依赖。
+依赖代码如下：
 
+java版本
+```
 
+ annotationProcessor 'com.alibaba:arouter-compiler:x.x.x'
+```
+kotlin版本
+```
+kapt 'com.alibaba:arouter-compiler:x.x.x'
+```
+若检查还是没有问题却还报错，建议[点击此链接滑动网页到后面查看官方Q&A](https://github.com/alibaba/ARouter/blob/master/README_CN.md)
 
+## 感谢
 
+[Android架构中添加AutoDispose解决RxJava内存泄漏](https://blog.csdn.net/mq2553299/article/details/79418068)
+[WanAndroid](https://www.wanandroid.com/)
+[SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
+[FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)
 
 
 
