@@ -1,11 +1,49 @@
-## 使用Java构建的一个模块化的MVP的项目
+# 使用Java构建的一个模块化的MVP的项目
 
-##### 个人项目仅供学习使用，感谢以下开放Api：
+## 个人项目仅供学习使用，感谢以下开放Api：
+- [玩Android](https://www.wanandroid.com/blog/show/2)
+- [干货集中营](http://gank.io/api)
+- [开眼视频](https://github.com/tonycheng93/Eyepetizer/blob/master/doc/%E5%BC%80%E7%9C%BC%E8%A7%86%E9%A2%91API%E6%96%87%E6%A1%A3.md)
+## Demo简介
+- 提供给初中级开发者学习**模块化的项目结构搭建**
+- 帮助开发者快速开发，demo很多地方可以灵活配置，可直接clone本项目到本地进行项目创建 
+- 本Java版本项目也同时依赖了Kotlin，并仅在view层(Activity/Fragment)内使用了Kotlin编写，方便开发者后期混合编程或者转向Kotlin开发，为此我还同时写了一个纯Kotlin版本的Demo，[点击链接即可访问](https://github.com/AnthonyCoder/MvpForKotlin)
+## 功能预览：
 
-[玩Android](https://www.wanandroid.com/blog/show/2)
+![](https://github.com/AnthonyCoder/MvpForJava/blob/master/gif/gifhome_320x640_13s.gif)![]
 
-[干货集中营](http://gank.io/api)
+## 主要开源框架：
+- [Rxjava2](https://github.com/ReactiveX/RxJava/tree/2.x)
+- [Rxandroid2](https://github.com/ReactiveX/RxAndroid)
+- [Retrofit2](https://github.com/square/retrofit)
+- [Okhttp3](https://github.com/square/okhttp)
+- [Gson](https://github.com/google/gson)
+- [Logger](https://github.com/orhanobut/logger)
+- [AutoDispose](https://github.com/uber/AutoDispose)
+- [Glide](https://github.com/bumptech/glide)
+- [Arouter](https://github.com/alibaba/ARouter/blob/master/README_CN.md)
+- [Eventbus](https://github.com/greenrobot/EventBus)
+- [GreenDao](https://github.com/greenrobot/greenDAO)
+- [Andpermission](https://github.com/yanzhenjie/AndPermission)
+- [X5webview](https://x5.tencent.com/)
+- [FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)
+- [Banner](https://github.com/youth5201314/banner)
+- [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
 
-[开眼视频](https://github.com/tonycheng93/Eyepetizer/blob/master/doc/%E5%BC%80%E7%9C%BC%E8%A7%86%E9%A2%91API%E6%96%87%E6%A1%A3.md)
+## 特点功能
+- 项目架构使用了符合绝大部分项目使用的 MVP 架构模式，并使用模块化设计方便多人维护
+- 使用了目前最流行的 RxJava2+Retrofit2+Okhttp3 作为网络框架搭建
+- 支持多BaseUrl（多服务器地址）访问接口，开发者可自行扩展
+- 同时支持表单提交、raw提交,并自动解析提交数据和返还数据
+- 支持 header 的动态添加
+- 支持请求、响应信息的打印
+- 支持自定义网络请求异常信息
+- 支持 https 证书的自定义配置
+- 使用比 [RxLifecycle](https://github.com/trello/RxLifecycle) 库更加优秀的 [AutoDispose](https://github.com/uber/AutoDispose) 库作为解决在 View 生命周期的变化中造成的内存泄漏问题
+- 使用 [Arouter](https://github.com/alibaba/ARouter/blob/master/README_CN.md) 库作为项目路由，作为模块之间的通信桥梁
+- 项目中封装了一个带状态的 RecyclerView，如错误页面、空页面状态展示，开发者可以根据项目情况自行扩展使用
 
-包含功能：
+## 基础MVP项目架构图
+
+
+
