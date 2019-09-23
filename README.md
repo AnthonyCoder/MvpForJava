@@ -46,6 +46,27 @@
 
 ## 基础MVP项目架构图
 ![](https://github.com/AnthonyCoder/MvpForJava/blob/master/gif/mvp_model.png)
+## 网络框架UML图
+![](https://github.com/AnthonyCoder/MvpForJava/blob/master/gif/base_net_model.png)
+## lib依赖关系
+![](https://github.com/AnthonyCoder/MvpForJava/blob/master/gif/model_relationship.png)
+
+### 快速集成到新项目中使用
+##### 1.clone到本地后，复制config.gradle文件，然后在项目build.gradle中引入config.gradle
+```
+apply from: "config.gradle"
+```
+##### 2.复制 common 模块并添加到项目中
+##### 3.业务模块依赖common模块
+##### 4.创建View层Activity继承BaseActivity，同时绑定Presenter
+##### 5.创建Contact接口类，约定View层接口和Presenter层接口
+##### 6.创建Presenter实现类，在Presenter实现类里面处理逻辑，通过传递进来的View实例通知View层
+
+
+
+
+
+
 
 
 
