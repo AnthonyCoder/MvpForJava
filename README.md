@@ -8,7 +8,7 @@
 - 提供给初中级开发者学习**模块化的项目结构搭建**
 - 帮助开发者快速开发，demo很多地方可以灵活配置，可直接clone本项目到本地进行项目创建 
 - 本Java版本项目也同时依赖了Kotlin，并仅在view层(Activity/Fragment)内使用了Kotlin编写，方便开发者后期混合编程或者转向Kotlin开发，为此我还同时写了[一个纯Kotlin版本的Demo](https://github.com/AnthonyCoder/MvpForKotlin),感兴趣的朋友可以点击看看
-- 希望路过的各位开发好汉，觉得不错的帮忙点个Star，谢谢~~
+- **希望路过的各位开发好汉，觉得不错的帮忙点个Star，谢谢~~**
 ## 功能预览：
 
 ![](https://github.com/AnthonyCoder/MvpForJava/blob/master/gif/gifhome_320x640_13s.gif)
