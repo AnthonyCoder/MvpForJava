@@ -20,22 +20,22 @@ import okhttp3.ResponseBody;
  * 创建人：anthony.wang
  * 功能描述：raw方式的json提交的请求类
  */
-public abstract class RawRequestClient<M,T extends BaseRequesModel> extends BaseNetClient {
+public abstract class RawRequestClient<T,M extends BaseRequesModel> extends BaseNetClient {
 
-    public Observable executeGet(String url, T requestModel, AppObserver<M> observer){
+    public Observable executeGet(String url, M requestModel, AppObserver<T> observer){
         return requestData(RequestType.GET,null,url,requestModel,observer);
     }
-    public Observable executePost(String url,T requestModel, AppObserver<M> observer){
+    public Observable executePost(String url,M requestModel, AppObserver<T> observer){
         return requestData(RequestType.POST,null,url,requestModel,observer);
     }
-    public Observable executeGetWithHeader(Map<String,String> headerMap,String url,T requestModel, AppObserver<M> observer){
+    public Observable executeGetWithHeader(Map<String,String> headerMap,String url,M requestModel, AppObserver<T> observer){
         return requestData(RequestType.GET,headerMap,url,requestModel,observer);
     }
-    public Observable executePostWithHeader(Map<String,String> headerMap,String url,T requestModel, AppObserver<M> observer){
+    public Observable executePostWithHeader(Map<String,String> headerMap,String url,M requestModel, AppObserver<T> observer){
         return requestData(RequestType.POST,headerMap,url,requestModel,observer);
     }
 
-    private Observable requestData(RequestType requestType,Map<String,String> headerMap, String url,T requestModel, AppObserver<M> observer) {
+    private Observable requestData(RequestType requestType,Map<String,String> headerMap, String url,M requestModel, AppObserver<T> observer) {
         if (requestType == null) {
             requestType = RequestType.GET;
         }

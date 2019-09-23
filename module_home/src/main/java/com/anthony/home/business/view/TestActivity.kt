@@ -47,7 +47,7 @@ class TestActivity: Activity() {
 
     }
     private fun doPostRequest(){
-        TestRawRequestClient.getInstance().executePost(UrlConstant.POST_MESSAGE_LOG,testLogRequestBean,object :AppObserver<MessageLogResult>(){
+        TestRawRequestClient.getInstance().executePost(UrlConstant.POST_MESSAGE_LOG, testLogRequestBean, object : AppObserver<MessageLogResult>() {
             override fun onNext(t: MessageLogResult) {
                 tv_response_msg.text = "响应参数：\n${Gson().toJson(t)}"
             }
