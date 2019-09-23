@@ -101,10 +101,10 @@ kapt 'com.alibaba:arouter-compiler:x.x.x'
 
 ## 感谢
 
-[Android架构中添加AutoDispose解决RxJava内存泄漏](https://blog.csdn.net/mq2553299/article/details/79418068)
-[WanAndroid](https://www.wanandroid.com/)
-[SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
-[FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)
+#### [Android架构中添加AutoDispose解决RxJava内存泄漏](https://blog.csdn.net/mq2553299/article/details/79418068)
+#### [WanAndroid](https://www.wanandroid.com/)
+#### [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
+#### [FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)
 
 
 
