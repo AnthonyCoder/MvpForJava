@@ -97,7 +97,10 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment  im
             loadingDialog = null;
         }
     }
-
+    @Override
+    public boolean isBindLifecycle() {
+        return true;
+    }
     @Override
     public Context getContext() {
         return mActivity;

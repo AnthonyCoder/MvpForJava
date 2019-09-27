@@ -17,4 +17,5 @@ public interface BaseView {
     void loadError(Object errorMsg);
     Context getContext();
     <T>AutoDisposeConverter<T> bindLifecycle();
+    boolean isBindLifecycle();//是否需要绑定view的生命周期
 }

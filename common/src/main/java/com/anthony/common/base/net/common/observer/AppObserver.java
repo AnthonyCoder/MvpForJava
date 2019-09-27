@@ -42,8 +42,8 @@ public abstract class AppObserver<T> extends BaseObserver<T> {
     }
     //获取绑定view层生命周期的 AutoDisposeConverter 实例
     public <R>AutoDisposeConverter<R> getAutoDisposeConverter(){
-        if(view!=null&&view.bindLifecycle()!=null){
-            return  view.bindLifecycle();
+        if(view!=null&&view.isBindLifecycle()&&view.bindLifecycle()!=null){
+            return view.bindLifecycle();
         }
         return null;
     }

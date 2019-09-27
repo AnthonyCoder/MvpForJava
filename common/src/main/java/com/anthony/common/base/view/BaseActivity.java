@@ -93,6 +93,11 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
     @Override
+    public boolean isBindLifecycle() {
+        return true;
+    }
+
+    @Override
     public <T> AutoDisposeConverter<T> bindLifecycle() {
         return RxLifecycleUtils.bindLifecycle(this);
     }
