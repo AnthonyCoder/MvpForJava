@@ -25,7 +25,7 @@ public class VideoListPresenter extends BasePresenter<VideoListContact.View> imp
         HashMap<String,Object> params = new HashMap<>();
         params.put("id",id+"");
         params.put("udid","d2807c895f0348a180148c9dfa6f2feeac0781b5");
-        BaobabFormRequestClient.getInstance().executePost(UrlConstant.POST_CATEGORIES_VIDEO_LIST, params, new AppObserver<VideoListResult>() {
+        BaobabFormRequestClient.getInstance().executePost(UrlConstant.POST_CATEGORIES_VIDEO_LIST, params, new AppObserver<VideoListResult>(view) {
             @Override
             public void onNext(VideoListResult videoListResult) {
                 view.setVideoList(videoListResult.getItemList());

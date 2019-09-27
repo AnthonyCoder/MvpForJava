@@ -1,12 +1,13 @@
 package com.anthony.home.business.view
 
-import android.app.Activity
-import android.os.Bundle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.anthony.common.base.constant.ARouterConstants
 import com.anthony.common.base.net.UrlConstant
 import com.anthony.common.base.net.client.request.raw.child.TestRawRequestClient
+import com.anthony.common.base.net.common.business.BasePresenter
+import com.anthony.common.base.net.common.business.BaseView
 import com.anthony.common.base.net.common.observer.AppObserver
+import com.anthony.common.base.view.BaseActivity
 import com.anthony.home.R
 import com.anthony.home.bean.MessageLogResult
 import com.anthony.home.bean.request.TestLogRequestBean
@@ -19,11 +20,14 @@ import kotlinx.android.synthetic.main.activity_test.*
  * 功能描述：
  */
 @Route(path = ARouterConstants.HOME_TEST_ACTIVITY)
-class TestActivity: Activity() {
-    private lateinit var testLogRequestBean: TestLogRequestBean
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test)
+class TestActivity: BaseActivity<BasePresenter<BaseView>>() {
+    override fun getLayoutId(): Int = R.layout.activity_test
+
+    override fun initView() {
+    }
+
+    override fun initData() {
+
         var deviceData: TestLogRequestBean.DeviceKeyModel = TestLogRequestBean.DeviceKeyModel().apply {
             deviceUnique = "00000000-0dbb-cb12-0000-00007a6589c0"
             platformName = "Xiaomi"
@@ -43,11 +47,15 @@ class TestActivity: Activity() {
             doPostRequest()
         }
     }
+
+    override fun getmPresenter(): BasePresenter<BaseView> = BasePresenter(this)
+
+    private lateinit var testLogRequestBean: TestLogRequestBean
     private fun doGetRequest(){
 
     }
     private fun doPostRequest(){
-        TestRawRequestClient.getInstance().executePost(UrlConstant.POST_MESSAGE_LOG, testLogRequestBean, object : AppObserver<MessageLogResult>() {
+        TestRawRequestClient.getInstance().executePost(UrlConstant.POST_MESSAGE_LOG, testLogRequestBean, object : AppObserver<MessageLogResult>(this) {
             override fun onNext(t: MessageLogResult) {
                 tv_response_msg.text = "响应参数：\n${Gson().toJson(t)}"
             }

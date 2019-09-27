@@ -43,7 +43,7 @@ public abstract class RawRequestClient<T,M extends BaseRequesModel> extends Base
         if(requestModel != null){
             requestBody = getRequestBodyFromObject(requestModel);
         }
-        Observable requestObservable = null;
+        Observable<ResponseBody> requestObservable = null;
         Observer<ResponseBody> responseBodyObserver = new Observer<ResponseBody>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -73,31 +73,34 @@ public abstract class RawRequestClient<T,M extends BaseRequesModel> extends Base
         switch (requestType) {
             case GET:
                 if(headerMap!=null){
-                    requestObservable = apiService.executeGetWithHeader(headerMap,url, requestBody)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread());
+                    requestObservable = apiService.executeGetWithHeader(headerMap,url, requestBody);
                 }else{
-                    requestObservable = apiService.executeGet(url, requestBody)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread());
+                    requestObservable = apiService.executeGet(url, requestBody);
                 }
 
                 break;
             case POST:
                 if(headerMap!=null) {
-                    requestObservable = apiService.executePostWithHeader(headerMap,url, requestBody)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread());
+                    requestObservable = apiService.executePostWithHeader(headerMap,url, requestBody);
                 }else{
-                    requestObservable = apiService.executePost(url, requestBody)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread());
+                    requestObservable = apiService.executePost(url, requestBody);
 
                 }
                 break;
         }
         if (requestObservable != null) {
-            requestObservable.subscribe(responseBodyObserver);
+            if(observer.getAutoDisposeConverter()!=null){
+                requestObservable
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .as(observer.getAutoDisposeConverter())
+                        .subscribe(responseBodyObserver);
+            }else{
+                requestObservable
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(responseBodyObserver);
+            }
         }
         return requestObservable;
     }

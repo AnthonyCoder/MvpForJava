@@ -7,6 +7,7 @@ import com.anthony.common.base.net.common.exception.ApiException;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.orhanobut.logger.Logger;
+import com.uber.autodispose.AutoDisposeConverter;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -26,7 +27,6 @@ public abstract class AppObserver<T> extends BaseObserver<T> {
 
     public AppObserver() {
     }
-
     public AppObserver(BaseView view) {
         this.view = view;
         onload(null);
@@ -39,6 +39,17 @@ public abstract class AppObserver<T> extends BaseObserver<T> {
         if(view!=null){
             view.onLoadIng(loadTips==null?view.getContext().getString(R.string.on_loading):loadTips);
         }
+    }
+    //获取绑定view层生命周期的 AutoDisposeConverter 实例
+    public <R>AutoDisposeConverter<R> getAutoDisposeConverter(){
+        if(view!=null&&view.bindLifecycle()!=null){
+            return  view.bindLifecycle();
+        }
+        return null;
+    }
+
+    public BaseView getView() {
+        return view;
     }
 
     @Override

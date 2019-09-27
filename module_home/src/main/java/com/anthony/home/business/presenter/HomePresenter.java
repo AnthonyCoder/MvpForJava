@@ -1,5 +1,7 @@
 package com.anthony.home.business.presenter;
 
+import android.util.Log;
+
 import com.anthony.common.base.net.UrlConstant;
 import com.anthony.common.base.net.client.request.form.child.WanAndroidFormRequestClient;
 import com.anthony.common.base.net.common.business.BasePresenter;
@@ -21,7 +23,7 @@ public class HomePresenter extends BasePresenter<HomeContact.View> implements Ho
 
     @Override
     public void getBanner() {
-        WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_BANNER_JSON, null, new AppObserver<BannerResult>() {
+        WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_BANNER_JSON, null, new AppObserver<BannerResult>(view) {
             @Override
             public void onNext(BannerResult bannerResults) {
                 view.onBanner(bannerResults.getData());
@@ -32,7 +34,7 @@ public class HomePresenter extends BasePresenter<HomeContact.View> implements Ho
 
     @Override
     public void getWeChatAuthors() {
-        WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_WXARTICLE_CHAPTERS_JSON, null, new AppObserver<WeChatAuthorResult>() {
+        WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_WXARTICLE_CHAPTERS_JSON, null, new AppObserver<WeChatAuthorResult>(view) {
             @Override
             public void onNext(WeChatAuthorResult weChatAuthorResult) {
                 view.onWeChatAuthors(weChatAuthorResult.getData());
@@ -43,12 +45,12 @@ public class HomePresenter extends BasePresenter<HomeContact.View> implements Ho
 
     @Override
     public void getHomeArticles(int page) {
-        WanAndroidFormRequestClient.getInstance().executeGet(formatUrl(UrlConstant.GET_ARTICLE_LIST_JSON,page+""), null, new AppObserver<HomeArticleResult>() {
+        WanAndroidFormRequestClient.getInstance().executeGet(formatUrl(UrlConstant.GET_ARTICLE_LIST_JSON,page+""), null, new AppObserver<HomeArticleResult>(view) {
             @Override
             public void onNext(HomeArticleResult homeArticleResult) {
                 view.onHomeArticles(homeArticleResult);
+                Log.d("获取文章", "onNext: 获取文章");
             }
-
         });
     }
 }

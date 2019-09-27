@@ -41,7 +41,7 @@ public abstract class FormRequestClient extends BaseNetClient {
         if(params == null){
             params = new HashMap<>();
         }
-        Observable requestObservable = null;
+        Observable<ResponseBody> requestObservable = null;
         Observer<ResponseBody> responseBodyObserver = new Observer<ResponseBody>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -87,10 +87,18 @@ public abstract class FormRequestClient extends BaseNetClient {
                 break;
         }
         if (requestObservable != null) {
-            requestObservable
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(responseBodyObserver);
+            if(observer.getAutoDisposeConverter()!=null){
+                requestObservable
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .as(observer.getAutoDisposeConverter())
+                        .subscribe(responseBodyObserver);
+            }else{
+                requestObservable
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(responseBodyObserver);
+            }
         }
         return requestObservable;
     }
