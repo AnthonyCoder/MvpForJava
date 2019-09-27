@@ -170,7 +170,6 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContact.View {
                     homeArticleAdapter = HomeArticleAdapter(dataList)
                     homeArticleAdapter!!.onItemClickListener = BaseQuickAdapter.OnItemClickListener { _, _, position ->
                         gotoWebViewActivity(dataList[position])
-                        mPresenter.getHomeArticles(page)
                     }
                     homeArticleAdapter!!.addHeaderView(headerView)
                     rv_home.adapter = homeArticleAdapter

@@ -2,14 +2,13 @@ package com.anthony.common.base.net.client.request.form;
 
 import com.anthony.common.base.net.client.base.BaseNetClient;
 import com.anthony.common.base.net.common.observer.AppObserver;
+import com.anthony.common.base.net.common.observer.SubscribeObserver;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 
@@ -42,32 +41,6 @@ public abstract class FormRequestClient extends BaseNetClient {
             params = new HashMap<>();
         }
         Observable<ResponseBody> requestObservable = null;
-        Observer<ResponseBody> responseBodyObserver = new Observer<ResponseBody>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                observer.onSubscribe(d);
-            }
-
-            @Override
-            public void onNext(ResponseBody responseBody) {
-                try {
-                    String json = responseBody.string();
-                    observer.onNext(observer.getEntityData(json));
-                } catch (Exception e) {
-                    observer.onError(e);
-                }
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                observer.onError(e);
-            }
-
-            @Override
-            public void onComplete() {
-                observer.onComplete();
-            }
-        };
         switch (requestType) {
             case GET:
                 if(headerMap!=null){
@@ -91,13 +64,14 @@ public abstract class FormRequestClient extends BaseNetClient {
                 requestObservable
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
+                        .doOnDispose(() -> observer.onDispose())
                         .as(observer.getAutoDisposeConverter())
-                        .subscribe(responseBodyObserver);
+                        .subscribe(new SubscribeObserver(observer));
             }else{
                 requestObservable
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(responseBodyObserver);
+                        .subscribe(new SubscribeObserver(observer));
             }
         }
         return requestObservable;

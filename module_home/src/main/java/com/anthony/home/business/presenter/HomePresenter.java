@@ -1,7 +1,5 @@
 package com.anthony.home.business.presenter;
 
-import android.util.Log;
-
 import com.anthony.common.base.net.UrlConstant;
 import com.anthony.common.base.net.client.request.form.child.WanAndroidFormRequestClient;
 import com.anthony.common.base.net.common.business.BasePresenter;
@@ -45,11 +43,10 @@ public class HomePresenter extends BasePresenter<HomeContact.View> implements Ho
 
     @Override
     public void getHomeArticles(int page) {
-        WanAndroidFormRequestClient.getInstance().executeGet(formatUrl(UrlConstant.GET_ARTICLE_LIST_JSON,page+""), null, new AppObserver<HomeArticleResult>(view) {
+        WanAndroidFormRequestClient.getInstance().executeGet(formatUrl(UrlConstant.GET_ARTICLE_LIST_JSON,page+""), null, new AppObserver<HomeArticleResult>(view,"获取文章") {
             @Override
             public void onNext(HomeArticleResult homeArticleResult) {
                 view.onHomeArticles(homeArticleResult);
-                Log.d("获取文章", "onNext: 获取文章");
             }
         });
     }

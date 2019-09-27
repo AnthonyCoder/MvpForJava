@@ -24,17 +24,16 @@ import com.uber.autodispose.AutoDisposeConverter;
  * 创建人：anthony.wang
  * 功能描述：
  */
-public abstract class BaseFragment<P extends BasePresenter> extends Fragment  implements BaseView {
+public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements BaseView {
     protected Activity mActivity;
     private LoadingDialog loadingDialog;
     private View rootView;
     protected P mPresenter;
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getmPresenter()!=null){
+        if (getmPresenter() != null) {
             mPresenter = getmPresenter();
         }
         mActivity = getActivity();
@@ -75,12 +74,14 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment  im
         }
 
     }
+
     public void setStatusBarTranslucent(int alpha) {
-        if(mActivity instanceof BaseActivity){
-            ((BaseActivity)mActivity).setStatusBarTranslucent(alpha);
+        if (mActivity instanceof BaseActivity) {
+            ((BaseActivity) mActivity).setStatusBarTranslucent(alpha);
         }
 
     }
+
     @Override
     public void loadCompleted() {
         if (loadingDialog != null) {
@@ -97,10 +98,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment  im
             loadingDialog = null;
         }
     }
-    @Override
-    public boolean isBindLifecycle() {
-        return true;
-    }
+
     @Override
     public Context getContext() {
         return mActivity;
@@ -123,6 +121,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment  im
     protected abstract int getLayoutId();
 
     protected abstract void initView();
+
     protected abstract void initData();
 
     protected abstract P getmPresenter();

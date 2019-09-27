@@ -38,7 +38,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         setStatusBarColor();
         rootView = LayoutInflater.from(mContext).inflate(getLayoutId(), null);
         setContentView(rootView);
-        if(getmPresenter()!=null){
+        if (getmPresenter() != null) {
             mPresenter = getmPresenter();
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -93,11 +93,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
     @Override
-    public boolean isBindLifecycle() {
-        return true;
-    }
-
-    @Override
     public <T> AutoDisposeConverter<T> bindLifecycle() {
         return RxLifecycleUtils.bindLifecycle(this);
     }
@@ -110,6 +105,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         Fragment routerFragment = (Fragment) ARouter.getInstance().build(path).navigation();
         return routerFragment;
     }
+
     public void setStatusBarColor() {
         StatusBarUtil.setColor(this, getResources().getColor(android.R.color.white), 0);
     }
@@ -117,6 +113,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     public void setStatusBarTranslucent(int alpha) {
         StatusBarUtil.setTranslucentForImageViewInFragment(this, alpha, null);
     }
+
     public void setStatusBarTextColor(Window window, boolean lightStatusBar) {
         // 设置状态栏字体颜色 白色与深色
         View decor = window.getDecorView();
@@ -131,9 +128,16 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         }
         decor.setSystemUiVisibility(ui);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
     protected abstract int getLayoutId();
 
     protected abstract void initView();
+
     protected abstract void initData();
 
     protected abstract P getmPresenter();
