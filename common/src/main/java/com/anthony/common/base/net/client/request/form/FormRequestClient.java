@@ -60,6 +60,7 @@ public abstract class FormRequestClient extends BaseNetClient {
                 break;
         }
         if (requestObservable != null) {
+            //若订阅需要绑定View层生命周期则走此方法 防止内存泄漏的问题
             if(observer.getAutoDisposeConverter()!=null){
                 requestObservable
                         .subscribeOn(Schedulers.io())
