@@ -38,11 +38,13 @@
 - 支持多BaseUrl（多服务器地址）访问接口，开发者可自行扩展
 - 同时支持表单提交、raw提交,并自动解析提交数据和返还数据
 - 支持 header 的动态添加
-- 支持请求、响应信息的打印
+- 支持对前后端约定的业务码进行统一形式（逻辑处理、通知view）处理，如 code=311，则是对Token过期处理等
+- 支持请求（请求参数、header）、响应信息（响应状态、响应的json数据）的打印
 - 支持自定义网络请求异常信息
 - 支持 https 证书的自定义配置
 - 使用比 [RxLifecycle](https://github.com/trello/RxLifecycle) 库更加优秀的 [AutoDispose](https://github.com/uber/AutoDispose) 库作为解决在 View 生命周期的变化中造成的内存泄漏问题
 - 使用 [Arouter](https://github.com/alibaba/ARouter/blob/master/README_CN.md) 库作为项目路由，作为模块之间的通信桥梁
+- 使用 [腾讯X5内核浏览器](https://x5.tencent.com/) 替代原生WebView加载网页
 - 项目中封装了一个带状态的 RecyclerView，如错误页面、空页面状态展示，开发者可以根据项目情况自行扩展使用
 
 ## 基础MVP项目架构图
