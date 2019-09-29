@@ -10,9 +10,9 @@ import okhttp3.ResponseBody;
  * 创建人：anthony.wang
  * 功能描述：
  */
-public class SubscribeObserver implements Observer<ResponseBody> {
-    private AppObserver appObserver;
-    public SubscribeObserver(AppObserver appObserver){
+public class SubscribeObserver<T> implements Observer<ResponseBody> {
+    private AppObserver<T> appObserver;
+    public SubscribeObserver(AppObserver<T> appObserver){
         this.appObserver = appObserver;
     }
     @Override
