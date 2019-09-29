@@ -24,6 +24,7 @@ public class GankPresenter extends BasePresenter<GankContact.View> implements Ga
         GankFormRequestClient.getInstance().executeGet(formatUrl(UrlConstant.GET_IMAGE_LIST,"16",page+""), null, new AppObserver<GankImageResult>(view) {
             @Override
             public void onNext(GankImageResult gankImageResult) {
+                super.onNext(gankImageResult);
                 if(gankImageResult.getResults().size()>0){
                     for (GankImageResult.ResultsBean bean:gankImageResult.getResults()) {
                         bean.setWith(550);

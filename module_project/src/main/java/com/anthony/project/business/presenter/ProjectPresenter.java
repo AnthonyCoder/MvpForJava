@@ -23,6 +23,7 @@ public class ProjectPresenter extends BasePresenter<ProjectContact.View> impleme
         WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_PROJECT_TREE, null, new AppObserver<ProjectTreeResult>(view) {
             @Override
             public void onNext(ProjectTreeResult treeResult) {
+                super.onNext(treeResult);
                 view.onProjectTabs(treeResult.getData());
             }
 

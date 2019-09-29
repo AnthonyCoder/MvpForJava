@@ -28,6 +28,7 @@ public class VideoListPresenter extends BasePresenter<VideoListContact.View> imp
         BaobabFormRequestClient.getInstance().executePost(UrlConstant.POST_CATEGORIES_VIDEO_LIST, params, new AppObserver<VideoListResult>(view) {
             @Override
             public void onNext(VideoListResult videoListResult) {
+                super.onNext(videoListResult);
                 view.setVideoList(videoListResult.getItemList());
             }
         });

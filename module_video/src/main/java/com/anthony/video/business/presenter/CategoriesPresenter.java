@@ -25,6 +25,7 @@ public class CategoriesPresenter extends BasePresenter<CategoriesContact.View> i
         BaobabFormRequestClient.getInstance().executeGet(UrlConstant.GET_CATEGORIES, null, new AppObserver<List<GetCategoriesResult>>(view) {
             @Override
             public void onNext(List<GetCategoriesResult> getCategoriesResults) {
+                super.onNext(getCategoriesResults);
                 view.setCategories(getCategoriesResults);
             }
         });

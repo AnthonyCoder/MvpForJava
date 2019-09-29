@@ -28,6 +28,7 @@ public class ProjectPagePresenter extends BasePresenter<ProjectPageContact.View>
         WanAndroidFormRequestClient.getInstance().executeGet(formatUrl(UrlConstant.GET_PROJECT,page+""), params, new AppObserver<ProjectListResult>(view) {
             @Override
             public void onNext(ProjectListResult treeResult) {
+                super.onNext(treeResult);
                 view.projectList(treeResult.getData().getDatas());
             }
         });

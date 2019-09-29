@@ -24,6 +24,7 @@ public class HomePresenter extends BasePresenter<HomeContact.View> implements Ho
         WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_BANNER_JSON, null, new AppObserver<BannerResult>(view) {
             @Override
             public void onNext(BannerResult bannerResults) {
+                super.onNext(bannerResults);
                 view.onBanner(bannerResults.getData());
             }
 
@@ -35,6 +36,7 @@ public class HomePresenter extends BasePresenter<HomeContact.View> implements Ho
         WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_WXARTICLE_CHAPTERS_JSON, null, new AppObserver<WeChatAuthorResult>(view) {
             @Override
             public void onNext(WeChatAuthorResult weChatAuthorResult) {
+                super.onNext(weChatAuthorResult);
                 view.onWeChatAuthors(weChatAuthorResult.getData());
             }
 
@@ -46,6 +48,7 @@ public class HomePresenter extends BasePresenter<HomeContact.View> implements Ho
         WanAndroidFormRequestClient.getInstance().executeGet(formatUrl(UrlConstant.GET_ARTICLE_LIST_JSON,page+""), null, new AppObserver<HomeArticleResult>(view,"获取文章") {
             @Override
             public void onNext(HomeArticleResult homeArticleResult) {
+                super.onNext(homeArticleResult);
                 view.onHomeArticles(homeArticleResult);
             }
         });

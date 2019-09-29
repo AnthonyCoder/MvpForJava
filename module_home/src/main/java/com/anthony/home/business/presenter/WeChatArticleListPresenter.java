@@ -22,6 +22,7 @@ public class WeChatArticleListPresenter extends BasePresenter<WeChatArticleListC
         WanAndroidFormRequestClient.getInstance().executeGet(formatUrl(UrlConstant.GET_WXARTICLE_LIST_JSON,id+"",page+""), null, new AppObserver<WxArticleListResult>(view) {
             @Override
             public void onNext(WxArticleListResult wxArticleListResult) {
+                super.onNext(wxArticleListResult);
                 view.onWeChatArticleList(wxArticleListResult.getData().getDatas());
             }
 

@@ -1,9 +1,12 @@
 package com.anthony.common.base.net.common.observer;
 
+import android.util.Log;
+
 import com.anthony.common.R;
 import com.anthony.common.base.constant.Constant;
 import com.anthony.common.base.net.common.business.BaseView;
 import com.anthony.common.base.net.common.exception.ApiException;
+import com.anthony.common.base.net.model.BaseResponseModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.orhanobut.logger.Logger;
@@ -75,6 +78,15 @@ public abstract class AppObserver<T> extends BaseObserver<T> {
             view.loadError(ex);
         }
 
+    }
+
+    @Override
+    public void onNext(T t) {//这里可以对业务码做统一的一层过滤处理，而且这里可以持有view层实例，支持某一业务码触发view层更新
+        if(t instanceof BaseResponseModel){//如果最终解析出来的数据 属于BaseResponseModel类或者他的子类调用这里
+            if(((BaseResponseModel) t).getErrorCode() == 300){
+                Log.d("打印", "onNext:code 300 ");
+            }
+        }
     }
 
     @Override
