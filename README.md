@@ -5,7 +5,7 @@
 - [干货集中营](http://gank.io/api)
 - [开眼视频](https://github.com/tonycheng93/Eyepetizer/blob/master/doc/%E5%BC%80%E7%9C%BC%E8%A7%86%E9%A2%91API%E6%96%87%E6%A1%A3.md)
 ## Demo简介
-- 该 Demo 更加详细的封装思路，请点击文章[如何优雅设计一个模块化的MVP架构](http://androidcoder.wang/2019/09/25/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84MVP%E6%9E%B6%E6%9E%84/)
+- 该 Demo 更加详细的封装思路，请点击文章[如何既装逼又优雅的设计一个模块化的MVP架构](https://juejin.im/post/5d8f007e6fb9a04e065d5e46)
 - 提供给初中级开发者学习**模块化的项目结构搭建**
 - 帮助开发者快速开发，demo很多地方可以灵活配置，可直接clone本项目到本地进行项目创建 
 - 本Java版本项目也同时依赖了Kotlin，并仅在view层(Activity/Fragment)内使用了Kotlin编写，方便开发者后期混合编程或者转向Kotlin开发，为此我还同时写了[一个纯Kotlin版本的Demo](https://github.com/AnthonyCoder/MvpForKotlin),感兴趣的朋友可以点击看看
@@ -76,14 +76,14 @@ WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_BANNER_JSON
 #### 2.普通 Post 请求提交示例:
 ```java
  HashMap<String,Object> params = new HashMap<>();
-         params.put("id",id+"");
-         params.put("udid","d2807c895f0348a180148c9dfa6f2feeac0781b5");
-         BaobabFormRequestClient.getInstance().executePost(UrlConstant.POST_CATEGORIES_VIDEO_LIST, params, new AppObserver<VideoListResult>(view) {
-             @Override
-             public void onNext(VideoListResult videoListResult) {
-                 view.setVideoList(videoListResult.getItemList());
-             }
-         });
+ params.put("id",id+"");
+ params.put("udid","d2807c895f0348a180148c9dfa6f2feeac0781b5");
+ BaobabFormRequestClient.getInstance().executePost(UrlConstant.POST_CATEGORIES_VIDEO_LIST, params, new AppObserver<VideoListResult>(view) {
+       @Override
+        public void onNext(VideoListResult videoListResult) {
+           view.setVideoList(videoListResult.getItemList());
+       }
+ });
 ```
 #### 3.带 Header 的 Get 请求提交示例(Post 类似):
 ```java
