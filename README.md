@@ -69,7 +69,8 @@ apply from: "config.gradle"
 ```java
 WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_BANNER_JSON, null, new AppObserver<BannerResult>(view,true) {
             @Override
-            public void onNext(BannerResult bannerResults) {
+            public void onNext(BannerResult bannBannerResulterResults) {
+                super.onNext(bannBannerResulterResults);
                 view.onBanner(bannerResults.getData());
             }
 
@@ -83,6 +84,7 @@ WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_BANNER_JSON
  BaobabFormRequestClient.getInstance().executePost(UrlConstant.POST_CATEGORIES_VIDEO_LIST, params, new AppObserver<VideoListResult>(view) {
        @Override
         public void onNext(VideoListResult videoListResult) {
+           super.onNext(videoListResult);
            view.setVideoList(videoListResult.getItemList());
        }
  });
@@ -94,6 +96,7 @@ headers.put("token","hosdbdkasdnfdfl");
 WanAndroidFormRequestClient.getInstance().executeGetWithHeader(headers,UrlConstant.GET_BANNER_JSON, null, new AppObserver<BannerResult>(view,true) {
             @Override
             public void onNext(BannerResult bannerResults) {
+                super.onNext(bannerResults);
                 view.onBanner(bannerResults.getData());
             }
 
@@ -104,6 +107,7 @@ WanAndroidFormRequestClient.getInstance().executeGetWithHeader(headers,UrlConsta
 WanAndroidFormRequestClient.getInstance().executeGet(UrlConstant.GET_BANNER_JSON, null, new AppObserver<BannerResult>(view,false) {
             @Override
             public void onNext(BannerResult bannerResults) {
+                super.onNext(bannerResults);
                 view.onBanner(bannerResults.getData());
             }
 
