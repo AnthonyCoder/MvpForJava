@@ -18,7 +18,7 @@ class MainActivity : BaseActivity<BasePresenter<BaseView>>() {
 
 
     private lateinit var fragmentManager: FragmentManager
-    private var menuTitles = arrayOf("首页", "项目", "福利", "更多")
+    private var menuTitles = arrayOf("首页", "项目", "福利", "用户")
     private var selectIconIds = arrayListOf(R.drawable.tab_home_select, R.drawable.tab_project_sel, R.drawable.tab_category_sel, R.drawable.tab_mine_sel)
     private var unSelectIconIds = arrayListOf(R.drawable.tab_home_unselect, R.drawable.tab_project_unsel, R.drawable.tab_category_unsel, R.drawable.tab_mine_unsel)
     private var tabEntitys = ArrayList<CustomTabEntity>()

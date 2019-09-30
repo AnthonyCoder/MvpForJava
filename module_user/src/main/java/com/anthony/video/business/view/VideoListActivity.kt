@@ -20,18 +20,20 @@ import kotlinx.android.synthetic.main.activity_video_list.*
  * 功能描述：
  */
 @Route(path = ARouterConstants.KAIYAN_VIDEOLIST_ACTIVITY)
-class VideoListActivity: BaseActivity<VideoListPresenter>(),VideoListContact.View {
+class VideoListActivity : BaseActivity<VideoListPresenter>(), VideoListContact.View {
 
     @JvmField
-    @Autowired(name = "id",required = true)
-    var id =0
-    private var videAdapter: VideoListAdapter? =null
+    @Autowired(name = "id", required = true)
+    var id = 0
+    private var videAdapter: VideoListAdapter? = null
 
     override fun getLayoutId() = R.layout.activity_video_list
 
     override fun initView() {
         rv_video_list.layoutManager = LinearLayoutManager(this)
     }
+
+    override fun getmPresenter() = VideoListPresenter(this)
 
     override fun initData() {
         ARouter.getInstance().inject(this)
@@ -48,5 +50,4 @@ class VideoListActivity: BaseActivity<VideoListPresenter>(),VideoListContact.Vie
         }
         rv_video_list.adapter = videAdapter
     }
-    override fun getmPresenter() = VideoListPresenter(this)
 }

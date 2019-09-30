@@ -30,21 +30,24 @@ class CategoriesFragment : BaseFragment<CategoriesPresenter>(), CategoriesContac
     override fun getLayoutId(): Int = R.layout.fragment_categories
 
     override fun initView() {
-        rv_categories.layoutManager = GridLayoutManager(mActivity, 2)
+
     }
 
     override fun initData() {
+        rv_categories.layoutManager = GridLayoutManager(mActivity, 2)
+        categoriesAdapter = CategoriesAdapter(dataList)
+        rv_categories.adapter = categoriesAdapter
         mPresenter.getCategories()
+        categoriesAdapter!!.onItemClickListener = BaseQuickAdapter.OnItemClickListener { adapter, view, position ->
+            ARouter.getInstance().build(ARouterConstants.KAIYAN_VIDEOLIST_ACTIVITY).withInt("id", dataList[position].id).navigation()
+        }
     }
+
 
     override fun setCategories(list: MutableList<GetCategoriesResult>) {
         dataList.clear()
         dataList.addAll(list)
-        categoriesAdapter = CategoriesAdapter(dataList)
-        categoriesAdapter!!.onItemClickListener = BaseQuickAdapter.OnItemClickListener { adapter, view, position ->
-            ARouter.getInstance().build(ARouterConstants.KAIYAN_VIDEOLIST_ACTIVITY).withInt("id", dataList[position].id).navigation()
-        }
-        rv_categories.adapter = categoriesAdapter
+        categoriesAdapter!!.notifyDataSetChanged()
     }
 
 }

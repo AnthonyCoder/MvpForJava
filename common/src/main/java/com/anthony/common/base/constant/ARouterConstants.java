@@ -6,20 +6,22 @@ package com.anthony.common.base.constant;
  * 功能描述：路由表常量池
  */
 public class ARouterConstants {
-    public static final String HOME_MAIN_ACTIVITY="/home/main/activity";
-    public static final String HOME_TEST_ACTIVITY="/home/test/activity";
-    public static final String HOME_MAIN_FRAGMENT="/home/main/fragment";
-    public static final String HOME_WECHAT_ACTICLELIST_ACTIVITY="/home/wechat/acticlelist/activity";
+  public static final String HOME_MAIN_ACTIVITY = "/home/main/activity";
+  public static final String HOME_TEST_ACTIVITY = "/home/test/activity";
+  public static final String HOME_MAIN_FRAGMENT = "/home/main/fragment";
+  public static final String HOME_WECHAT_ACTICLELIST_ACTIVITY = "/home/wechat/acticlelist/activity";
 
 
-    public static final String PROJECT_MAIN_FRAGMENT="/project/main/fragment";
-    public static final String PROJECT_PAGE_FRAGMENT="/project/page/fragment";
+  public static final String PROJECT_MAIN_FRAGMENT = "/project/main/fragment";//项目
+  public static final String PROJECT_PAGE_FRAGMENT = "/project/page/fragment";
 
 
-    public static final String GANK_MAIN_FRAGMENT="/gank/main/fragment";
-    public static final String USER_MAIN_FRAGMENT="/user/main/fragment";
-    public static final String KAIYAN_VIDEOLIST_ACTIVITY="/user/videolist/activity";
+  public static final String GANK_MAIN_FRAGMENT = "/gank/main/fragment";//福利
 
 
-    public static final String COMMON_X5WEB_ACTIVITY= "/common/x5web/activity";
+  public static final String USER_MAIN_FRAGMENT = "/user/main/fragment";  //更多标签
+  public static final String KAIYAN_VIDEOLIST_ACTIVITY = "/user/videolist/activity";
+
+  public static final String COMMON_X5WEB_ACTIVITY = "/common/x5web/activity";
+  public static final String GANK_MAIN_TESTACTIVITY = "/gank/main/testActivity";  //test mvp
 }
