@@ -5,6 +5,7 @@ import com.google.gson.JsonParseException;
 import org.json.JSONException;
 
 import java.net.ConnectException;
+import java.net.UnknownHostException;
 import java.text.ParseException;
 
 import retrofit2.HttpException;
@@ -56,7 +57,7 @@ public class ExceptionEngine {
             ex = new ApiException(e, ERROR.PARSE_ERROR);
             ex.setDisplayMessage("解析错误");            //均视为解析错误
             return ex;
-        }else if(e instanceof ConnectException){
+        }else if(e instanceof ConnectException||e instanceof UnknownHostException){
             ex = new ApiException(e, ERROR.NETWORD_ERROR);
             ex.setDisplayMessage("连接失败");  //均视为网络错误
             return ex;

@@ -2,6 +2,7 @@ package com.anthony.common.base.net.common.business;
 
 import android.content.Context;
 
+import com.anthony.common.base.net.common.exception.ApiException;
 import com.uber.autodispose.AutoDisposeConverter;
 
 /**
@@ -11,7 +12,7 @@ import com.uber.autodispose.AutoDisposeConverter;
  */
 public interface BaseView {
     void showToast(String msg);
-    void onError(String errorMsg);
+    void onError(ApiException exception);
     void onLoadIng(String tip);
     void loadCompleted();
     void loadError(Object errorMsg);

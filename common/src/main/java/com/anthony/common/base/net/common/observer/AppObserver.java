@@ -73,6 +73,7 @@ public abstract class AppObserver<T> extends BaseObserver<T> {
     }
     @Override
     protected void onError(ApiException ex) {
+        view.onError(ex);
         Logger.t(Constant.NET_LOG_TAG).e(String.format(Constant.NET_EXCEPTION_STRING, ex.getDisplayMessage()));
         if (view != null) {
             view.loadError(ex);

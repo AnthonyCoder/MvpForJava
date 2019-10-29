@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.anthony.common.base.net.common.business.BasePresenter;
 import com.anthony.common.base.net.common.business.BaseView;
+import com.anthony.common.base.net.common.exception.ApiException;
+import com.anthony.common.base.net.common.exception.ExceptionEngine;
 import com.anthony.common.util.rxlife.RxLifecycleUtils;
 import com.anthony.common.util.toast.ToastUtils;
 import com.anthony.common.widgets.loading.dialog.LoadingDialog;
@@ -59,8 +61,10 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     }
 
     @Override
-    public void onError(String errorMsg) {
-        ToastUtils.show(errorMsg);
+    public void onError(ApiException e) {
+        if(e.getCode()== ExceptionEngine.ERROR.NETWORD_ERROR){
+            //执行响应逻辑判断
+        }
     }
 
     @Override
