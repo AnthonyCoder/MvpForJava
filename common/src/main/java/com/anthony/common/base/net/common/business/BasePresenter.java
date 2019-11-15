@@ -10,7 +10,7 @@ public class BasePresenter<V extends BaseView> {
     public BasePresenter(V view){
         this.view = view;
     }
-    protected String formatUrl(String needFormatUrl,String...params){
+    protected String formatUrl(String needFormatUrl,Object...params){
         if(needFormatUrl!=null&&params.length>0){
             return String.format(needFormatUrl,params);
         }
